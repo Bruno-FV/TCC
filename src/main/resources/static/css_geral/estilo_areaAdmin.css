@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2? família=Josefin+Laje:wght@600&família=Merienda+Um&display=swap');
+/******************************ESTILO MENU LATERAL INICIO*********************************/
+
+body {
+    background-color: #ead2ac;
+    font-family: 'Josefin Slab', serifa;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 58px;
+}
+
+span {
+    font-size: 2em;
+    font-family: 'Merienda', cursive;
+    color: #ead2ac;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Merienda', cursive;
+}
+
+#menu {
+    float: left;
+    margin-top: 5em;
+    max-width: 3em;
+    height: 100vh;
+    background-color: #3E2F5B;
+    position: fixed;
+    transition: 1s;
+
+}
+
+.list-group {
+    visibility: collapse;
+}
+
+.bi {
+    visibility: visible;
+    color: #D1603D;
+    vertical-align: -8px;
+    margin-right: 5px;
+}
+
+.list-group-item {
+    cursor: pointer;
+    background-color: inherit;
+    color: white;
+    left: -21px;
+}
+
+.fixed-bottom {
+    max-width: 16em;
+    left: -12px;
+}
+
+
+/******************************ESTILO ATUALIZAÇÃO DE SERVIÇOS INICIO*****************************/
+
+#atualizacao {
+    margin-top: 5em;
+    padding: 0;
+    float: right;
+    display: none;
+}
+
+#conteudo {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+
+}
+
+/******************************ESTILO RELATÓRIOS INICIO**************************************/
+#relatorios {
+    float: right;
+    margin-top: 5em;
+    display: none;
+}
+
+#relatorioConsultas,
+#relatorioExames {
+    cursor: pointer;
+}
+
+#rConsultas,
+#rExames {
+    display: none;
+}
+
+
+
+/******************************ESTILO AGENDAMENTO DE CONSULTAS INICIO************************/
+.consultas {
+    float: right;
+    margin-top: 5em;
+    display: none;
+
+
+}
+
+/******************************ESTILO AGENDAMENTO DE EXAMES INICIO***************************/
+.exames {
+    float: right;
+    margin-top: 5em;
+    display: none;
+
+}
+
+#tabelaexames,
+#tabelaconsultas {
+    text-align: center;
+}
+
+/******************************ANIMAÇÕES MENU LATERAL INICIO*********************************/
+
+#menu:hover {
+    max-width: 16em;
+    transition: 0.2s;
+    visibility: visible;
+}
+
+.list-group:hover {
+    visibility: visible;
+    transition: 1s;
+}

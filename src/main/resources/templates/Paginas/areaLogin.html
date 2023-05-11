@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!---------------------------------------LINKS DO BOOTSTRAP CSS E JAVASCRIP INICIO------------------------------------------->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!---------------------------------------LINKS DO BOOTSTRAP CSS E JAVASCRIP FIM---------------------------------------------->
+
+    <!---------------------------------------LINK DO BOOTSTRAP ICONS INICIO------------------------------------------------------>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!---------------------------------------LINK DO BOOTSTRAP ICONS FIM--------------------------------------------------------->
+    <link rel="ícone de atalho" href="/img/logopagina.png" type="image/x-icon">
+    <script src="/script/script-live-reloader.js" defer></script>
+    <script src="/script/script-areaCliente.js" defer></script>
+    <script src="/script/script-validacao.js" defer></script>
+    <link rel="stylesheet" href="/css_geral/estilo_areaCliente.css">
+    <title>Área Cliente</title>
+</head>
+
+<body>
+    <!------------------------------------HTML BARRA DE NAVEGAÇÃO E MENU LATERAL INICIO------------------------------------------>
+    <header>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a href="/home" class="navbar-brand"><img src="/img/logopagina.png"
+                        alt="Logo Coração">Laboratório<span>Vida</span></a>
+                <div>
+                    <p class="text-end m-2"><span th:text="${session.secaoIniciada.nome}">
+                        </span><i class=" m-1 bi bi-person-circle fs-1" id="nomeUsuario"></i></p>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <div id="menu" class="container p-2">
+        <ul class="list-group list-group-flush">
+            <li id="click1" class="list-group-item"><i class="bi bi-view-list  fs-1"></i>Minhas Solicitações</li>
+            <li id="click2" class="list-group-item"><i class="bi bi-plus-circle  fs-1"></i>Nova Consultas</li>
+            <li id="click3" class="list-group-item "><i class="bi bi-plus-circle  fs-1"></i>Novo Exames</li>
+            <li class="list-group-item fixed-bottom">
+                <i class="bi bi-box-arrow-right fs-1"></i>
+                <form action="/logout" method="post">
+                    <button type="submit">Sair</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!------------------------------------HTML PÁGINA MINHAS SOLICITAÇÕES INICIO------------------------------------------------->
+    <div id="msolicitacao" class="container-fluid">
+        <h1 class="text-center">Minhas Solicitações</h1>
+        <hr class="w-25 mx-auto">
+        <div id="conteudo" class="row g-3">
+            <fieldset class="border rounded-2 p-3 m-1 col-5">
+                <legend class="float-none w-auto">Últimas Consultas</legend>
+                <div id="tabelaconsultas">
+                    <table class="table table-striped text-break">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Médico</th>
+                                <th scope="col">Especialidade</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">Bruno Ferreira Vieira</th>
+                                <th scope="row">Psiquiatra</th>
+                                <th scope="row">concluido</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">Bruno Ferreira Vieira 2</th>
+                                <th scope="row">Psiquiatra 2</th>
+                                <th scope="row">concluido</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">Bruno Ferreira Vieira 3</th>
+                                <th scope="row">Psiquiatra 3</th>
+                                <th scope="row">concluido</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+            <fieldset class="border rounded-2 p-3 m-1 col-5">
+                <legend class="float-none w-auto">Útimos Exames</legend>
+                <div id="tabelaexames">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Valor Total</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">emograma completo</th>
+                                <th scope="row">R$ 80,00</th>
+                                <th scope="row">realizado</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">emograma</th>
+                                <th scope="row">R$ 80,00</th>
+                                <th scope="row">realizado</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">sangue</th>
+                                <th scope="row">R$ 80,00</th>
+                                <th scope="row">realizado</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <h1 class="text-center">Solicitações em andamento</h1>
+            <hr class="w-25 mx-auto">
+            <div id="solicitacaoAndamento" class="row g-3">
+                <fieldset class="border p-3 rounded-2 m-1 col-5">
+                    <legend class="float-none w-auto">Últimas Consultas</legend>
+                    <div id="tabelaconsultas">
+                        <table class="table table-striped text-break">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Médico</th>
+                                    <th scope="col">Especialidade</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">01/02/2022</th>
+                                    <th scope="row">Bruno Ferreira Vieira</th>
+                                    <th scope="row">Psiquiatra</th>
+                                    <th scope="row">concluido</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">01/02/2022</th>
+                                    <th scope="row">Bruno Ferreira Vieira 2</th>
+                                    <th scope="row">Psiquiatra 2</th>
+                                    <th scope="row">concluido</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">01/02/2022</th>
+                                    <th scope="row">Bruno Ferreira Vieira 3</th>
+                                    <th scope="row">Psiquiatra 3</th>
+                                    <th scope="row">concluido</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+                <fieldset class="border p-3 m-1 col-5">
+                    <legend class="float-none w-auto">Útimos Exames</legend>
+                    <div id="tabelaexames">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Valor Total</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">01/02/2022</th>
+                                    <th scope="row">emograma completo</th>
+                                    <th scope="row">R$ 80,00</th>
+                                    <th scope="row">realizado</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">01/02/2022</th>
+                                    <th scope="row">emograma</th>
+                                    <th scope="row">R$ 80,00</th>
+                                    <th scope="row">realizado</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">01/02/2022</th>
+                                    <th scope="row">sangue</th>
+                                    <th scope="row">R$ 80,00</th>
+                                    <th scope="row">realizado</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------HTML PÁGINA CONSULTAS INICIO----------------------------------------------------------->
+    <section id="consultas" class="consultas">
+        <div class="container">
+            <h1 class="text-center">Agendar Consultas</h1>
+            <hr class="w-25 mx-auto">
+            <form class="needs-validation" novalidate>
+                <fieldset class="border row g-3 rounded-2 p-3 m-2">
+                    <legend class="float-none w-auto">Dados paciente</legend>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label for="checkbox" class="form-check-label">paciente é o mesmo do cadastro?</label>
+
+                    </div>
+                    <div class="col-md-5">
+                        <label for="paciente" class="form-label">Paciente</label>
+                        <input type="text" class="form-control" name="paciente" id="paciente" required>
+                        <div class="invalid-feedback">
+                            Você deve informar seu nome.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" name="telefone" id="telefone" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="idade" class="form-label">Data de nascimento</label>
+                        <input type="date" name="idade" id="idade" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="medico" class="form-label">Médico</label>
+                        <input class="form-control" id="medico" name="medico" type="search" placeholder="pesquisar"
+                            required>
+                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="especialidade" class="form-label">Especialidade</label>
+                        <input class="form-control" name="especialidade" id="especialidade" type="search"
+                            placeholder="pesquisar" required>
+                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="agendamento" class="form-label">Selecione a data</label>
+                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horario" class="form-label">Horário</label>
+                        <input type="time" name="horario" id="horario" class="form-control" required>
+                    </div>
+                </fieldset>
+                <button class="btn btn-success" type="submit">Salvar agendamento</button>
+            </form>
+        </div>
+    </section>
+
+    <!------------------------------------HTML PÁGINA EXAMES INICIO----------------------------------------------------------->
+    <section id="exames" class="exames">
+        <div class="container">
+            <h1 class="text-center">Agendar Exames</h1>
+            <hr class="w-25 mx-auto">
+            <form class=" needs-validation" novalidate>
+                <fieldset class="border row g-3 rounded-2 p-3 m-2">
+                    <legend class="float-none w-auto">Dados paciente</legend>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label for="checkbox" class="form-check-label">paciente é o mesmo do cadastro?</label>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="paciente" class="form-label">Paciente</label>
+                        <input type="text" class="form-control" name="paciente" id="paciente" required>
+                        <div class="invalid-feedback">
+                            Você deve informar seu nome.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" name="telefone" id="telefone" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="idade" class="form-label">Data de nascimento</label>
+                        <input type="date" name="idade" id="idade" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="medico" class="form-label">Médico Solicitante</label>
+                        <input class="form-control" id="medico" name="medico" type="text" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="tipoexame" class="form-label">Tipo de exames</label>
+                        <input class="form-control" name="tipoexame" id="tipoexame" type="search"
+                            placeholder="pesquisar" required>
+                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="agendamento" class="form-label">Selecione a data</label>
+                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horario" class="form-label">Horário</label>
+                        <input type="time" name="horario" id="horario" class="form-control" required>
+                    </div>
+                </fieldset>
+                <button class="btn btn-success" type="submit">Salvar agendamento</button>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2? família=Josefin+Laje:wght@600&família=Merienda+Um&display=swap');
+
+body {
+    font-family: 'Josefin Slab', serifa;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    background: linear-gradient(220deg, #ead2ac 2%, #d1603d 7%, #053B06, #0bba5a);
+    padding: 0;
+    height: 100vh;
+    justify-content: center;
+    color: white;
+    background-size: 400% 400%;
+    animation: efeitofundo 10s ease infinite;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 58px;
+}
+
+#img-login {
+    background-color: #d1603d;
+    position: absolute;
+    margin: auto;
+    top: 3em;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#img-login img {
+    width: 90%;
+    border-radius: 50%;
+}
+
+#login h1 {
+    text-align: center;
+    font-family: 'Merienda', cursive;
+}
+
+#login {
+    background: linear-gradient(220deg, #d1603d, #053B06, #0bba5a);
+    min-width: 22em;
+    padding: 3em;
+    box-shadow: 0 2em 1em #000000;
+    border-radius: 0px 2em 0 2em;
+}
+
+#login #campos input {
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px white solid;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 1em;
+}
+
+.form-control:focus {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#login #campos label {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+#botao-login {
+    width: 100%;
+    background: linear-gradient(350deg, #0bba5a, #d1603d, #053b06);
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 2em;
+    padding: 8px;
+    margin-bottom: 1em;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#criar-Cadastro {
+    display: flex;
+    justify-content: center;
+}
+
+/************************************************ Animações  **************************************************/
+@keyframes efeitofundo {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    55% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 50% 0%;
+    }
+}

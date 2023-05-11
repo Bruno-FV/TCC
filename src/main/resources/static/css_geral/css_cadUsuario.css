@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2? família=Josefin+Laje:wght@600&família=Merienda+Um&display=swap');
+
+h1,
+h2,
+h3 {
+    font-family: 'Merienda', cursive;
+}
+
+body {
+    font-family: 'Josefin Slab', serifa;
+    font-size: 16px;
+    background: linear-gradient(240deg, #44027e, #24024a, #500a5c, #450251);
+    color: white;
+}
+
+.container #campos input {
+    border: none;
+    border-bottom: 1px white solid;
+    background-color: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 1em;
+    color: white;
+}
+
+#campos-senha {
+    margin-top: 3px;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: 58px;
+}
+
+.form-control:focus {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

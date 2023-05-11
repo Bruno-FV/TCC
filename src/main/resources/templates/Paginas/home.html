@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="ícone de atalho" href="/img/logopagina.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="/css_geral/estilo_padrao.css" rel="stylesheet">
+    <script src="/script/script-live-reloader.js"></script>
+    <title>Laboratório Vida</title>
+</head>
+<header>
+    <nav class="navbar navbar-dark navbar-expand-sm barradenavegacao fixed-top">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand"><img src="/img/logopagina.png" alt="Logo Coração"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="menu">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="#slides">Home</a>
+                    <a class="nav-item nav-link" href="#quem-somos">Quem Somos</a>
+                    <a class="nav-item nav-link" href="#contato">Contato</a>
+                    <a class="nav-item nav-link" href="/loginAdmin">Administração</a>
+                    <a class="nav-item nav-link" href="/login">Login</a>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Serviços
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#consultas">Consultas</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#exames">Exames</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <!-----------------Seção de apresentação do carrosel----------------->
+    <section>
+        <div id="slides" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#slides" data-bs-slide-to="0" class="active" aria-current="true"
+                    arial-label="slide 1"></button>
+                <button type="button" data-bs-target="#slides" data-bs-slide-to="1" arial-label="slide 2"></button>
+                <button type="button" data-bs-target="#slides" data-bs-slide-to="2" arial-label="slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img id="img_slide" src="img/slide1-cortado.jpg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>imagem ilustrativa</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img id="img_slide" src="/img/slide2-cortada.jpg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>imagem ilustrativa</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img id="img_slide" src="/img/slide3-cortado.jpg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>imagem ilustrativa</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slides" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slides" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <!-----------------Seção da pagina dos Serviços---------------------->
+    <section id="servicos">
+        <div class="container">
+            <div class="row" id="exames">
+                <div class="col-md-7">
+                    <img src="/img/slide1.jpg" alt="imagem do Laborátorio">
+                </div>
+                <div class="col-md-5">
+                    <h2 id="titulo">exames</h2>
+                    <p>Nosos exames são realizados com as mais novas tecnoligias disponíveis, mantendo um alto padrão
+                        de qualidade. Venha e agende seus exames conosco.</p>
+                    <a class="btn btn-primary btn-lg" href="/login">Solicite aqui</a>
+                </div>
+            </div>
+            <div class="row" id="consultas">
+                <div class="col-md-7">
+                    <img src="/img/slide1.jpg" alt="Imagem medico em atendimento">
+                </div>
+                <div class="col-md-5">
+                    <h2 id="titulo">consultas</h2>
+                    <p>Aqui temos os melhores proficionais para lhe atender, todos certificados em diversas
+                        especialidades.</p>
+                    <a class="btn btn-primary btn-lg" href="/login">Solicite aqui</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-----------------Seção da pagina Quem Somos------------------------>
+    <section id="quem-somos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 id="titulo">Quem Somos</h3>
+                    <hr class="w-25 mx-auto">
+                    <p>Somos uma empresa que preserva os princípios estamos aqui para garantir um serviço de qualidade
+                        trabalhamos com as mais novas tecnologias disponivéis no mercado garantido um alto padrão nos
+                        resultados
+                        de nossos exames, disponibilizamos excelentes profissionais para lhe atender, todos devidamente
+                        certificados em diversas especialidades. Somos uma empresa que cuida da sua saúde.
+                    </p>
+                </div>
+            </div>
+            <div class="row" id="missao-valores">
+                <div class="col-6">
+                    <h3 id="titulo">Missão</h3>
+                    <hr class="w-25 mx-auto">
+                    <p>Garantir exames de alta qualidade, ser referência pelo serviço prestado.</p>
+                </div>
+                <div class="col-5">
+                    <h3 id="titulo">Valores</h3>
+                    <hr class="w-25 mx-auto">
+                    <ul>
+                        <li>Respeito</li>
+                        <li>Ética</li>
+                        <li>Humildade</li>
+                        <li>Honestidade</li>
+                        <li>Disciplina</li>
+                        <li>Liberdade</li>
+                        <li>Responsabilidade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<!-----------------Seção da pagina de Contato------------------------>
+<footer>
+    <div class="container-fluid" id="contato">
+        <div class="row">
+            <div class="col-6">
+                <iframe title="local da clinica" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0519952204395!2d-42.
+                85893308726655!3d-4.584689099999998!2m3!1f0!2f0!3f0!3m2!1i1024!
+                2i768!4f13.1!3m3!1m2!1s0x78de7fc78f0ceb3%3A0xc8970eaee316095f!2sR.
+                %20Sete%20de%20Setembro%2C%20752%20-%20Centro%2C%20Uni%C3%A3o%20-%20PI%2C%
+                2064120-000!5e0!3m2!1spt-BR!2sbr!4v1682559091519!5m2!1spt-BR!2sbr" width="700" height="400"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-6">
+                <h2>Fale Conosco</h2>
+                <p><i class="bi bi-whatsapp fs-1 m-2"></i>(86) 99471-2058</p>
+                <p> <i class="bi bi-envelope-at fs-1 m-2"></i>E-mail</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div>
+        <p id="texto-footer" class="text-center text-uppercase"><i class="bi bi-c-circle m-2"></i>
+            2023 Bruno Ferreira Vieira.
+            <span class="text-lowercase text-capitalize fs-5">todos os direitos reservados.</span>
+        </p>
+    </div>
+</footer>
+
+</html>
