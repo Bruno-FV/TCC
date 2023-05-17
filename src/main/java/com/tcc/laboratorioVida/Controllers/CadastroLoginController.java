@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcc.laboratorioVida.Models.CadastroLogin;
 import com.tcc.laboratorioVida.Repository.CadLoginRepo;
+import com.tcc.laboratorioVida.Repository.Criptografia;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -30,6 +31,7 @@ public class CadastroLoginController {
             aviso.addFlashAttribute("mensagem", "Email já cadastrado, efetue login.");
             return "redirect:/login";
         } else {
+            cadastroLogin.setSenha(Criptografia.md5cripto(cadastroLogin.getSenha()));
             cadLoginRepo.save(cadastroLogin);
             session.setAttribute("secaoIniciada", cadastroLogin);
             return "redirect:/arealogin";

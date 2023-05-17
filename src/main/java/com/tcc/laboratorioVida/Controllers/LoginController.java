@@ -8,8 +8,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcc.laboratorioVida.Models.CadastroLogin;
 import com.tcc.laboratorioVida.Repository.CadLoginRepo;
+import com.tcc.laboratorioVida.Repository.Criptografia;
 
 import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class LoginController {
@@ -23,8 +25,9 @@ public class LoginController {
   }
 
   @PostMapping("/validar")
-  public String validar(CadastroLogin confirmar, HttpSession session, RedirectAttributes aviso) {
-    CadastroLogin confirmacao = this.cadLoginRepo.login(confirmar.getEmail(), confirmar.getSenha());
+  public String validar(CadastroLogin confirmar, HttpSession session,
+   RedirectAttributes aviso) {
+    CadastroLogin confirmacao = this.cadLoginRepo.login(confirmar.getEmail(), Criptografia.md5cripto(confirmar.getSenha()));
     if (confirmacao != null) {
       session.setAttribute("secaoIniciada", confirmacao);
       return "redirect:/arealogin";
@@ -38,6 +41,6 @@ public class LoginController {
   @PostMapping("/logout")
   public String logout(HttpSession session) {
     session.invalidate();
-    return "Paginas/login";
+    return "redirect:/login";
   }
 }
