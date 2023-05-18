@@ -38,7 +38,7 @@ public class LoginController {
         Criptografia.md5cripto(confirmar.getSenha()));
     if (confirmacao != null) {
       session.setAttribute("secaoIniciada", confirmacao);
-      session.setMaxInactiveInterval(5);
+      session.setMaxInactiveInterval(60*60);
       return "redirect:/arealogin";
     } else {
       aviso.addFlashAttribute("mensagem", "Email ou senha inválidos, tente novamente");

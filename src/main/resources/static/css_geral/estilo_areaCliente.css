@@ -42,6 +42,11 @@ h3 {
     transition: 1s;
 
 }
+#btnsair{
+    background-color: inherit;
+    border: none;
+    color: white;
+}
 
 .list-group {
     visibility: collapse;
