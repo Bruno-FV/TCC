@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class CadastroLogin implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

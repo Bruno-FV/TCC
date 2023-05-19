@@ -34,6 +34,7 @@ public class LoginController {
   @PostMapping("/validar")
   public String validar(CadastroLogin confirmar, HttpSession session,
       RedirectAttributes aviso) {
+        
     CadastroLogin confirmacao = this.cadLoginRepo.login(confirmar.getEmail(),
         Criptografia.md5cripto(confirmar.getSenha()));
     if (confirmacao != null) {

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!---------------------------------------LINKS DO BOOTSTRAP CSS E JAVASCRIP INICIO------------------------------------------->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!---------------------------------------LINK DO BOOTSTRAP ICONS INICIO------------------------------------------------------>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="ícone de atalho" href="/img/logopagina.png" type="image/x-icon">
+    <script src="/script-live-reloader.js" defer></script>
+    <script src="/script/script-areaAdmin.js" defer></script>
+    <script src="/script/script-validacao.js" defer></script>
+    <link rel="stylesheet" href="/css_geral/estilo_areaAdmin.css">
+    <title>Área Administração</title>
+</head>
+
+<body>
+    <!------------------------------------HTML BARRA DE NAVEGAÇÃO E MENU LATERAL INICIO------------------------------------------>
+    <header>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a href="/home" class="navbar-brand"><img src="/img/logopagina.png"
+                        alt="Logo Coração">Laboratório<span>Vida</span></a>
+            </div>
+        </nav>
+    </header>
+    <div id="menu" class="container p-2">
+        <ul class="list-group list-group-flush">
+            <li id="click1" class="list-group-item"><i  class="bi bi-arrow-repeat  fs-1"></i>Atualização de Serviços</li>
+            <li id="click2" class="list-group-item"><i  class="bi bi-clipboard-data  fs-1"></i>Relatórios</li>
+            <li id="click3" class="list-group-item"><i class="bi bi-clipboard-pulse  fs-1"></i>Nova Consultas</li>
+            <li id="click4" class="list-group-item "><i class="bi bi-bandaid  fs-1"></i>Novo Exames</li>
+            <form action="/logoutAdmin" method="post">
+                <button id="btnsair" type="submit"><i class="bi bi-box-arrow-right fs-1"></i>Sair</button>
+            </form>
+        </ul>
+    </div>
+
+    <!------------------------------------HTML PÁGINA ATUALIZAÇÃO DE SERVIÇOS INICIO--------------------------------------------->  
+    <section id="atualizacao" class="container-fluid">
+        <div>
+            <h1 class="text-center">Atualização de Serviços</h1>
+            <hr class="w-25 mx-auto">
+            <div id="conteudo">
+                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                    <legend class="float-none w-auto"> Consultas</legend>
+                    <form class="needs-validation" novalidate>
+                        <div>
+                            <label for="especialidade" class="form-label">Especialidade</label>
+                            <input type="text" class="form-control" name="especialidade" id="especialidade" required>
+                            <div class="invalid-feedback">
+                                Você deve informar a Especialidade.
+                            </div>
+                        </div>
+                        <div>
+                            <label for="medico" class="form-label">Médico</label>
+                            <input type="text" class="form-control" name="medico" id="medico" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o nome do Médico.
+                            </div>
+                        </div>
+                        <button class="btn btn-danger m-2" type="submit">Remover</button>
+                        <button class="btn btn-success m-2" type="submit">Adcionar</button>
+                        
+                    </form>
+                </fieldset>
+            </div>
+            <div id="conteudo">
+                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                    <legend class="float-none w-auto">Exames</legend>
+                    <form class="needs-validation" novalidate>
+                        <div>
+                            <label for="exame" class="form-label">Exame</label>
+                            <input type="text" class="form-control" name="exame" id="exame" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o nome do exame.
+                            </div>
+                        </div>
+                        <button class="btn btn-danger m-2" type="submit">Remover</button>
+                        <button class="btn btn-success m-2" type="submit">Adcionar</button>
+                        
+                    </form>
+                </fieldset>
+                
+            </div>
+            <div id="conteudo">
+                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                    <legend class="float-none w-auto">Contato</legend>
+                </fieldset>
+            </div>
+           
+        </div>
+    </section>
+
+    <!------------------------------------HTML PÁGINA RELATÓRIOS----------------------------------------------------------------->
+    <section id="relatorios" class="container-fluid">
+        <h1 class="text-center">Relatórios</h1>
+        <hr class="w-25 mx-auto">
+        <div class="row g-3">
+            <div class="col-6">
+                <legend id="relatorioConsultas" class="text-center" ><i class="bi bi-clipboard-pulse  fs-1"></i>Consultas</legend>
+                <hr class="w-25 mx-auto">
+            </div>
+            <div class="col-6">
+                <legend id="relatorioExames" class="text-center"><i class="bi bi-bandaid  fs-1"></i>Exames</legend>
+                <hr class="w-25 mx-auto">
+            </div>
+        </div>
+        <div id="conteudo">
+            <fieldset id="rConsultas" class="border rounded-2 p-3 m-1 col-5">
+                <legend class="float-none w-auto">Consultas</legend>
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="dataInicial" class="form-label">Data inicial</label>
+                        <input type="date" name="dataInicial" id="dataInicial" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dataFinal" class="form-label">Data Final</label>
+                        <input type="date" name="dataFinal" id="dataFinal" class="form-control" required>
+                    </div>
+                    <div class="d-grid gap-2 col-5 mx-auto">
+                        <button class="btn btn-success m-2" type="submit">Exibir</button>
+                    </div>
+                    
+                </form>
+                <div id="tabelaconsultas">
+                    <table class="table table-striped text-break">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Especialidade</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Valor Unitário</th>
+                                <th scope="col">Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">Pediátra</th>
+                                <th scope="row">5</th>
+                                <th scope="row">200</th>
+                                <th scope="row">1000</th>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </fieldset>
+            <fieldset id="rExames" class="border rounded-2 p-3 m-1 col-5">
+                <legend class="float-none w-auto">Exames</legend>
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="dataInicial" class="form-label">Data inicial</label>
+                        <input type="date" name="dataInicial" id="dataInicial" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dataFinal" class="form-label">Data Final</label>
+                        <input type="date" name="dataFinal" id="dataFinal" class="form-control" required>
+                    </div>
+                    <div class="d-grid gap-2 col-5 mx-auto">
+                        <button class="btn btn-success m-2" type="submit">Exibir</button>
+                    </div>
+                </form>
+                <div id="tabelaexames">
+                    <table class="table table-striped text-break">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Valor Unitário</th>
+                                <th scope="col">Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">01/02/2022</th>
+                                <th scope="row">emograma completo</th>
+                                <th scope="col">5</th>
+                                <th scope="row">R$ 80,00</th>
+                                <th scope="row">400</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+    </section>
+   
+    <!------------------------------------HTML PÁGINA CONSULTAS INICIO----------------------------------------------------------->
+    <section id="consultas" class="consultas">
+        <div class="container">
+            <h1 class="text-center">Agendar Consultas</h1><hr class="w-25 mx-auto">
+            <form class="needs-validation" novalidate>
+                <fieldset class="border row g-3 rounded-2 p-3 m-2">
+                    <legend class="float-none w-auto">Dados paciente</legend>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label for="checkbox" class="form-check-label" >paciente é o mesmo do cadastro?</label>
+                        
+                    </div>
+                    <div class="col-md-5">
+                        <label for="paciente" class="form-label">Paciente</label>
+                        <input type="text" class="form-control" name="paciente" id="paciente" required>
+                        <div class="invalid-feedback">
+                            Você deve informar seu nome.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" name="telefone" id="telefone" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label for="idade" class="form-label">Data de nascimento</label>
+                        <input type="date" name="idade" id="idade" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="medico" class="form-label">Médico</label>
+                        <input class="form-control" id="medico" name="medico" type="search" placeholder="pesquisar" required>
+                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="especialidade" class="form-label">Especialidade</label>
+                        <input class="form-control" name="especialidade" id="especialidade" type="search" placeholder="pesquisar" required>
+                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="agendamento" class="form-label">Selecione a data</label>
+                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horario" class="form-label">Horário</label>
+                        <input type="time" name="horario" id="horario" class="form-control" required>
+                    </div>
+                </fieldset>
+                <button class="btn btn-success" type="submit">Salvar agendamento</button>
+            </form>
+        </div>
+    </section>
+    
+    <!------------------------------------HTML PÁGINA EXAMES INICIO-------------------------------------------------------------->
+    <section id="exames" class="exames">
+        <div class="container">
+            <h1 class="text-center">Agendar Exames</h1><hr class="w-25 mx-auto">
+            <form class=" needs-validation" novalidate>
+                <fieldset class="border row g-3 rounded-2 p-3 m-2">
+                    <legend class="float-none w-auto">Dados paciente</legend>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label for="checkbox" class="form-check-label" >paciente é o mesmo do cadastro?</label> 
+                    </div>
+                    <div class="col-md-5">
+                        <label for="paciente" class="form-label">Paciente</label>
+                        <input type="text" class="form-control" name="paciente" id="paciente" required>
+                        <div class="invalid-feedback">
+                            Você deve informar seu nome.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" name="telefone" id="telefone" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label for="idade" class="form-label">Data de nascimento</label>
+                        <input type="date" name="idade" id="idade" class="form-control" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="medico" class="form-label">Médico Solicitante</label>
+                        <input class="form-control" id="medico" name="medico" type="text" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="tipoexame" class="form-label">Tipo de exames</label>
+                        <input class="form-control" name="tipoexame" id="tipoexame" type="search" placeholder="pesquisar" required>
+                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="agendamento" class="form-label">Selecione a data</label>
+                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horario" class="form-label">Horário</label>
+                        <input type="time" name="horario" id="horario" class="form-control" required>
+                    </div>
+                </fieldset>
+                <button class="btn btn-success" type="submit">Salvar agendamento</button>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
