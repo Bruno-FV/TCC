@@ -26,6 +26,7 @@ public class CadastroAdminController {
 
     @PostMapping("/cadastro/salvar_bd")
     public String salvarAdmin(CadastroAdmin emailUser,CadastroAdmin cadastroAdmin, HttpSession session,RedirectAttributes alerta){
+        
         CadastroAdmin autenticaremail = this.cadAdminRepo.verificarEmailAdmin(emailUser.getEmail());
         if(autenticaremail != null){
             alerta.addFlashAttribute("mensagem", "Email já cadastrado, efetue login.");

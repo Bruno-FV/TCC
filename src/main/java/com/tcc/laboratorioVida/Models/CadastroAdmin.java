@@ -2,6 +2,7 @@ package com.tcc.laboratorioVida.Models;
 
 import java.io.Serializable;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ public class CadastroAdmin implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String colaborador;
     @Column(unique = true)

@@ -55,22 +55,29 @@
             <div id="conteudo">
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto"> Consultas</legend>
-                    <form class="needs-validation" novalidate>
-                        <div>
+                    <form action="/adicionar" method="post" class="needs-validation" novalidate>
+                        <div class="col-12">
                             <label for="especialidade" class="form-label">Especialidade</label>
                             <input type="text" class="form-control" name="especialidade" id="especialidade" required>
                             <div class="invalid-feedback">
                                 Você deve informar a Especialidade.
                             </div>
                         </div>
-                        <div>
+                        <div class="col-12">
                             <label for="medico" class="form-label">Médico</label>
                             <input type="text" class="form-control" name="medico" id="medico" required>
                             <div class="invalid-feedback">
                                 Você deve informar o nome do Médico.
                             </div>
                         </div>
-                        <button class="btn btn-danger m-2" type="submit">Remover</button>
+                        <div class="col-3">
+                            <label for="valor" class="form-label">Valor</label>
+                            <input type="text" class="form-control" name="valor" id="valor" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o Valor.
+                            </div>
+                        </div>
+                        <button class="btn btn-danger m-2" type="reset">Remover</button>
                         <button class="btn btn-success m-2" type="submit">Adcionar</button>
                         
                     </form>
@@ -232,15 +239,20 @@
                         <input type="date" name="idade" id="idade" class="form-control" required>
                     </div>
                     <div class="col-md-5">
-                        <label for="medico" class="form-label">Médico</label>
-                        <input class="form-control" id="medico" name="medico" type="search" placeholder="pesquisar" required>
-                        <button class="btn btn-outline-success" type="submit">Localizar</button>
-                    </div>
-                    <div class="col-md-5">
                         <label for="especialidade" class="form-label">Especialidade</label>
                         <input class="form-control" name="especialidade" id="especialidade" type="search" placeholder="pesquisar" required>
                         <button class="btn btn-outline-success" type="submit">Localizar</button>
                     </div>
+                    <div class="col-md-5"    >
+                        <label  for="medico" class="form-label">Médico</label>
+                        <select class="form-select" name="medico" id="medico" required>
+                            <option value="1"></option>
+                            <option th:each="test : ${teste}"  ><span th:text="${test.medico}"></span> </option>
+                            
+                        </select>
+                        
+                    </div>
+                    
                     <div class="col-md-3">
                         <label for="agendamento" class="form-label">Selecione a data</label>
                         <input type="date" name="agendamento" id="agendamento" class="form-control" required>
