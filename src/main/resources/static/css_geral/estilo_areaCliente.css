@@ -15,10 +15,10 @@ body {
     width: 58px;
 }
 
-span {
+#nomeuser {
     font-size: 2em;
     font-family: 'Merienda', cursive;
-    color: #ead2ac;
+    color: #f7f7f7;
 }
 
 #nomeUsuario {

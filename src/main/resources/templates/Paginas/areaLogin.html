@@ -36,7 +36,7 @@
                 <a href="/home" class="navbar-brand"><img src="/img/logopagina.png"
                         alt="Logo Coração">Laboratório<span>Vida</span></a>
                 <div>
-                    <p class="text-end m-2"><span th:text="${session.secaoIniciada.nome}">
+                    <p class="text-end m-2"><span id="nomeuser" th:text="${session.secaoIniciada.nome}">
                         </span><i class=" m-1 bi bi-person-circle fs-1" id="nomeUsuario"></i></p>
                 </div>
             </div>
@@ -80,18 +80,8 @@
                                 <th scope="row">Psiquiatra</th>
                                 <th scope="row">concluido</th>
                             </tr>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">Bruno Ferreira Vieira 2</th>
-                                <th scope="row">Psiquiatra 2</th>
-                                <th scope="row">concluido</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">Bruno Ferreira Vieira 3</th>
-                                <th scope="row">Psiquiatra 3</th>
-                                <th scope="row">concluido</th>
-                            </tr>
+                          
+                            
                         </tbody>
                     </table>
                 </div>
@@ -115,18 +105,7 @@
                                 <th scope="row">R$ 80,00</th>
                                 <th scope="row">realizado</th>
                             </tr>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">emograma</th>
-                                <th scope="row">R$ 80,00</th>
-                                <th scope="row">realizado</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">sangue</th>
-                                <th scope="row">R$ 80,00</th>
-                                <th scope="row">realizado</th>
-                            </tr>
+                          
                         </tbody>
                     </table>
                 </div>
@@ -216,45 +195,44 @@
             <h1 class="text-center">Agendar Consultas</h1>
             <hr class="w-25 mx-auto">
             <form class="needs-validation" novalidate>
-                <fieldset class="border row g-3 rounded-2 p-3 m-2">
+                <fieldset class="border row g-3 rounded-2 p-3 m-2" >
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox">
-                        <label for="checkbox" class="form-check-label">paciente é o mesmo do cadastro?</label>
-
-                    </div>
+                   
                     <div class="col-md-5">
-                        <label for="paciente" class="form-label">Paciente</label>
-                        <input type="text" class="form-control" name="paciente" id="paciente" required>
+                        <label  for="paciente" class="form-label">Paciente :</label>
+                        <span class="text-capitalize" th:text="${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}"></span>
                         <div class="invalid-feedback">
                             Você deve informar seu nome.
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text" name="telefone" id="telefone" class="form-control" required>
+                        <label for="telefone" class="form-label">Telefone :</label>
+                        <span th:text="${session.secaoIniciada.telefone}"></span>
                     </div>
                     <div class="col-md-5">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" name="email" id="email" class="form-control" required>
+                        <label for="email" class="form-label">E-mail :</label>
+                        <span th:text="${session.secaoIniciada.email}"></span>
                     </div>
 
                     <div class="col-md-3">
                         <label for="idade" class="form-label">Data de nascimento</label>
-                        <input type="date" name="idade" id="idade" class="form-control" required>
+                        <span th:text="${session.secaoIniciada.dataNascimento}"></span>
                     </div>
                     <div class="col-md-5">
-                        <label for="medico" class="form-label">Médico</label>
-                        <input class="form-control" id="medico" name="medico" type="search" placeholder="pesquisar"
-                            required>
-                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                        <label for="especialidade" class="form-label" >Especialidade</label>
+                        <select onchange="filtrarMedicos()"  class="form-select" name="especialidade" id="especialidade"  required>
+                            <option></option>
+                            <option    th:each="test:${especialidadeMedicoas}"><span  th:text="${test.especialidade}"></span> </option> 
+                        </select>
                     </div>
-                    <div class="col-md-5">
-                        <label for="especialidade" class="form-label">Especialidade</label>
-                        <input class="form-control" name="especialidade" id="especialidade" type="search"
-                            placeholder="pesquisar" required>
-                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    <div class="col-md-5"    >
+                        <label   for="medicos" class="form-label">Médico</label>
+                        <select id="medicos" class="form-select" name="medicos"  required><span></span>
+                            <option>Selecione um medico</option> 
+                            
+                        </select>
                     </div>
+
                     <div class="col-md-3">
                         <label for="agendamento" class="form-label">Selecione a data</label>
                         <input type="date" name="agendamento" id="agendamento" class="form-control" required>
@@ -277,42 +255,37 @@
             <form class=" needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox">
-                        <label for="checkbox" class="form-check-label">paciente é o mesmo do cadastro?</label>
-                    </div>
+                    
                     <div class="col-md-5">
                         <label for="paciente" class="form-label">Paciente</label>
-                        <input type="text" class="form-control" name="paciente" id="paciente" required>
+                        <span class="text-capitalize" th:text="${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}"></span>
                         <div class="invalid-feedback">
                             Você deve informar seu nome.
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text" name="telefone" id="telefone" class="form-control" required>
+                        <span class="text-capitalize" th:text="${session.secaoIniciada.telefone}"></span>
                     </div>
                     <div class="col-md-5">
                         <label for="email" class="form-label">E-mail</label>
-                        <input type="email" name="email" id="email" class="form-control" required>
+                        <span class="text-capitalize" th:text="${session.secaoIniciada.email}"></span>
                     </div>
 
                     <div class="col-md-3">
                         <label for="idade" class="form-label">Data de nascimento</label>
-                        <input type="date" name="idade" id="idade" class="form-control" required>
+                        <span class="text-capitalize" th:text="${session.secaoIniciada.dataNascimento}"></span>
                     </div>
                     <div class="col-md-5">
                         <label for="medico" class="form-label">Médico Solicitante</label>
                         <input class="form-control" id="medico" name="medico" type="text" required>
                     </div>
-                    <div class="col-md-5">
-                        <label for="tipoexame" class="form-label">Tipo de exames</label>
-                        <select name="tipoexame" id="tipoexame" required>
-                            <option></option>
+                    <div class="col-md-4"    >
+                        <label   for="tipoExame" class="form-label">Tipo de exame</label>
+                        <select id="tipoExame" class="form-select" name="tipoExame"  required>
+                            <option th:each="exames:${tiposExames}"><span th:text="${exames.nome}"></span></option> 
+                            
                         </select>
-                            th:values="${exames}" th:text="${exames}" <input class="form-control" name="tipoexame" id="tipoexame" type="search"
-                            placeholder="pesquisar" required>
-                        <button class="btn btn-outline-success" type="submit">Localizar</button>-->
                     </div>
                     <div class="col-md-3">
                         <label for="agendamento" class="form-label">Selecione a data</label>
@@ -327,6 +300,27 @@
             </form>
         </div>
     </section>
+
+    <script th:inline="javascript">
+        function filtrarMedicos() {
+          
+          /*<![CDATA[*/
+          let lista = /*[[${especialidadeMedicoas}]]*/ [];
+          /*]]>*/
+          
+          const selectEspecialidades = document.querySelector('select').value;
+          const selectMedicos = document.querySelector('#medicos');
+          selectMedicos.innerHTML = "";
+          for(let list of lista){
+              if(selectEspecialidades === list.especialidade){
+                const elementoOption = document.createElement('option');
+                elementoOption.textContent = list.medico;
+                selectMedicos.appendChild(elementoOption);
+              }
+              
+          }
+        }
+       </script>
 </body>
 
 </html>

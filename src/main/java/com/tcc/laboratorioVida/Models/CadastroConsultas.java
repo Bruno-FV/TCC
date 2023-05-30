@@ -17,6 +17,8 @@ public class CadastroConsultas implements Serializable {
     private String medico;
     private String valor;
 
+    
+
     public Long getId() {
         return this.id;
     }

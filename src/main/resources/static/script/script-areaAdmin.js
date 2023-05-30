@@ -1,9 +1,12 @@
+
+
+ 
+
+
+
 /**
  * função para exibir e ocultar o conteudo do menu lateral
  */
-window.onload = function () {
-
-}
 let exibirAtualizacao = document.querySelector('#click1');
 let exibirRelatorios = document.querySelector('#click2')
 let exibirConsultas = document.querySelector('#click3');

@@ -9,6 +9,4 @@ import com.tcc.laboratorioVida.Models.CadastroConsultas;
 
 public interface CadConsultasRepo extends CrudRepository<CadastroConsultas, String> {
     
-    /*@Query(value = "select * from cadastro_consultas where medico = :medico", nativeQuery = true)
-    /*public CadastroConsultas registro(String medico); */
 }

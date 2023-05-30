@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <link rel="ícone de atalho" href="/img/logopagina.png" type="image/x-icon">
-    <script src="/script-live-reloader.js" defer></script>
     <script src="/script/script-areaAdmin.js" defer></script>
     <script src="/script/script-validacao.js" defer></script>
     <link rel="stylesheet" href="/css_geral/estilo_areaAdmin.css">
@@ -55,7 +54,7 @@
             <div id="conteudo">
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto"> Consultas</legend>
-                    <form action="/adicionar" method="post" class="needs-validation" novalidate>
+                    <form action="/adicionarConsultas" method="post" class="needs-validation" novalidate>
                         <div class="col-12">
                             <label for="especialidade" class="form-label">Especialidade</label>
                             <input type="text" class="form-control" name="especialidade" id="especialidade" required>
@@ -86,12 +85,19 @@
             <div id="conteudo">
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto">Exames</legend>
-                    <form class="needs-validation" novalidate>
+                    <form action="/adcionarExames" method="post" class="needs-validation" novalidate>
                         <div>
-                            <label for="exame" class="form-label">Exame</label>
-                            <input type="text" class="form-control" name="exame" id="exame" required>
+                            <label for="nome" class="form-label">Exame</label>
+                            <input type="text" class="form-control" name="nome" id="exame" required>
                             <div class="invalid-feedback">
                                 Você deve informar o nome do exame.
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="valor" class="form-label">Valor</label>
+                            <input type="text" class="form-control" name="valor" id="valor" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o valor do exame.
                             </div>
                         </div>
                         <button class="btn btn-danger m-2" type="submit">Remover</button>
@@ -213,11 +219,6 @@
             <form class="needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox">
-                        <label for="checkbox" class="form-check-label" >paciente é o mesmo do cadastro?</label>
-                        
-                    </div>
                     <div class="col-md-5">
                         <label for="paciente" class="form-label">Paciente</label>
                         <input type="text" class="form-control" name="paciente" id="paciente" required>
@@ -238,19 +239,24 @@
                         <label for="idade" class="form-label">Data de nascimento</label>
                         <input type="date" name="idade" id="idade" class="form-control" required>
                     </div>
+                    
+                    
                     <div class="col-md-5">
-                        <label for="especialidade" class="form-label">Especialidade</label>
-                        <input class="form-control" name="especialidade" id="especialidade" type="search" placeholder="pesquisar" required>
-                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                        <label for="especialidade" class="form-label" >Especialidade</label>
+                        <select onchange="filtrarMedicos()"  class="form-select" name="especialidade" id="especialidade"  required>
+                            <option  ></option>
+                            <option    th:each="test:${especialidadeMedicoas}"><span  th:text="${test.especialidade}"></span> </option> 
+                        </select>
                     </div>
                     <div class="col-md-5"    >
-                        <label  for="medico" class="form-label">Médico</label>
-                        <select class="form-select" name="medico" id="medico" required>
-                            <option value="1"></option>
-                            <option th:each="test : ${teste}"  ><span th:text="${test.medico}"></span> </option>
-                            
+                        <label   for="medicos" class="form-label">Médico</label>
+                        <select id="medicos" class="form-select" name="medicos"  required>
+                            <option ></option> 
                         </select>
-                        
+                    </div>
+                    <div class="col-md-1"    >
+                        <label   for="valor" class="form-label">Valor</label>
+                        <input  id="valor" class="form-control" name="valor">
                     </div>
                     
                     <div class="col-md-3">
@@ -274,10 +280,6 @@
             <form class=" needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox">
-                        <label for="checkbox" class="form-check-label" >paciente é o mesmo do cadastro?</label> 
-                    </div>
                     <div class="col-md-5">
                         <label for="paciente" class="form-label">Paciente</label>
                         <input type="text" class="form-control" name="paciente" id="paciente" required>
@@ -302,10 +304,12 @@
                         <label for="medico" class="form-label">Médico Solicitante</label>
                         <input class="form-control" id="medico" name="medico" type="text" required>
                     </div>
-                    <div class="col-md-5">
-                        <label for="tipoexame" class="form-label">Tipo de exames</label>
-                        <input class="form-control" name="tipoexame" id="tipoexame" type="search" placeholder="pesquisar" required>
-                        <button class="btn btn-outline-success" type="submit">Localizar</button>
+                    <div class="col-md-4"    >
+                        <label   for="tipoExame" class="form-label">Tipo de exame</label>
+                        <select id="tipoExame" class="form-select" name="tipoExame"  required>
+                            <option th:each="exames:${tiposExames}"><span th:text="${exames.nome}"></span></option> 
+                            
+                        </select>
                     </div>
                     <div class="col-md-3">
                         <label for="agendamento" class="form-label">Selecione a data</label>
@@ -320,6 +324,30 @@
             </form>
         </div>
     </section>
+    <script th:inline="javascript">
+     function filtrarMedicos() {
+       
+       /*<![CDATA[*/
+       let lista = /*[[${especialidadeMedicoas}]]*/ [];
+       /*]]>*/
+
+       const selectEspecialidades = document.querySelector('select').value;
+       const selectMedicos = document.querySelector('#medicos');
+       const inputValor = document.querySelector('#valor');
+       selectMedicos.innerHTML = "";
+       for(let list of lista){
+           if(selectEspecialidades === list.especialidade){
+             const elementoOption = document.createElement('option');
+             elementoOption.textContent = list.medico;
+             selectMedicos.appendChild(elementoOption);                      
+           }
+           
+           
+       }
+       
+     }
+    </script>
+
 </body>
 
 </html>

@@ -13,4 +13,6 @@ public interface CadLoginRepo extends CrudRepository<CadastroLogin, String> {
     @Query(value = "select * from cadastro_login where email = :email", nativeQuery = true)
     public CadastroLogin verificarEmail(String email);
 
+    
+
 }
