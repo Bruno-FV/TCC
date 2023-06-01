@@ -14,7 +14,7 @@ public class CadastroExames implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome;
+    private String nomeExame;
     private String valor;
 
     public Long getId() {
@@ -25,12 +25,12 @@ public class CadastroExames implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return this.nome;
+    public String getNomeExame() {
+        return this.nomeExame;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeExame(String nomeExame) {
+        this.nomeExame = nomeExame;
     }
 
     public String getValor() {

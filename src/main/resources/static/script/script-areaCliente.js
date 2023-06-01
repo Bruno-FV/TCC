@@ -1,6 +1,7 @@
-window.onload = function () {
 
-}
+
+
+
 let exibirsolicitacoes = document.querySelector('#click1');
 let exibirconsultas = document.querySelector('#click2');
 let exibirexames = document.querySelector('#click3');

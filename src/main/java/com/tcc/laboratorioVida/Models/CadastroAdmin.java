@@ -14,7 +14,7 @@ public class CadastroAdmin implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String colaborador;
     @Column(unique = true)

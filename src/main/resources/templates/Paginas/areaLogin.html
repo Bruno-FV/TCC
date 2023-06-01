@@ -21,7 +21,7 @@
 
     <!---------------------------------------LINK DO BOOTSTRAP ICONS FIM--------------------------------------------------------->
     <link rel="ícone de atalho" href="/img/logopagina.png" type="image/x-icon">
-    <script src="/script/script-live-reloader.js" defer></script>
+
     <script src="/script/script-areaCliente.js" defer></script>
     <script src="/script/script-validacao.js" defer></script>
     <link rel="stylesheet" href="/css_geral/estilo_areaCliente.css">
@@ -36,7 +36,7 @@
                 <a href="/home" class="navbar-brand"><img src="/img/logopagina.png"
                         alt="Logo Coração">Laboratório<span>Vida</span></a>
                 <div>
-                    <p class="text-end m-2"><span id="nomeuser" th:text="${session.secaoIniciada.nome}">
+                    <p class="text-end m-2 text-capitalize"><span id="nomeuser" th:text="${session.secaoIniciada.nome}">
                         </span><i class=" m-1 bi bi-person-circle fs-1" id="nomeUsuario"></i></p>
                 </div>
             </div>
@@ -80,8 +80,8 @@
                                 <th scope="row">Psiquiatra</th>
                                 <th scope="row">concluido</th>
                             </tr>
-                          
-                            
+
+
                         </tbody>
                     </table>
                 </div>
@@ -105,7 +105,7 @@
                                 <th scope="row">R$ 80,00</th>
                                 <th scope="row">realizado</th>
                             </tr>
-                          
+
                         </tbody>
                     </table>
                 </div>
@@ -194,52 +194,61 @@
         <div class="container">
             <h1 class="text-center">Agendar Consultas</h1>
             <hr class="w-25 mx-auto">
-            <form class="needs-validation" novalidate>
-                <fieldset class="border row g-3 rounded-2 p-3 m-2" >
+            <form action="/agendar" method="post" class="needs-validation" novalidate>
+                <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                   
-                    <div class="col-md-5">
-                        <label  for="paciente" class="form-label">Paciente :</label>
-                        <span class="text-capitalize" th:text="${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}"></span>
-                        <div class="invalid-feedback">
-                            Você deve informar seu nome.
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="telefone" class="form-label">Telefone :</label>
-                        <span th:text="${session.secaoIniciada.telefone}"></span>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="email" class="form-label">E-mail :</label>
-                        <span th:text="${session.secaoIniciada.email}"></span>
-                    </div>
 
-                    <div class="col-md-3">
-                        <label for="idade" class="form-label">Data de nascimento</label>
-                        <span th:text="${session.secaoIniciada.dataNascimento}"></span>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="especialidade" class="form-label" >Especialidade</label>
-                        <select onchange="filtrarMedicos()"  class="form-select" name="especialidade" id="especialidade"  required>
-                            <option></option>
-                            <option    th:each="test:${especialidadeMedicoas}"><span  th:text="${test.especialidade}"></span> </option> 
-                        </select>
-                    </div>
-                    <div class="col-md-5"    >
-                        <label   for="medicos" class="form-label">Médico</label>
-                        <select id="medicos" class="form-select" name="medicos"  required><span></span>
-                            <option>Selecione um medico</option> 
-                            
-                        </select>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="agendamento" class="form-label">Selecione a data</label>
-                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+                    <div class="col-md-4">
+                        <label for="paciente" class="form-label">Paciente :</label>
+                        <input name="paciente" id="paciente" class="text-capitalize form-control"><span id="spanpaci" 
+                            th:text="${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}">
+                            </span>
+                        
                     </div>
                     <div class="col-md-2">
-                        <label for="horario" class="form-label">Horário</label>
-                        <input type="time" name="horario" id="horario" class="form-control" required>
+                        <label for="telefone" class="form-label">Telefone :</label>
+                        <input class="form-control" name="telefone" id="telefone"><span id="spantel"
+                            th:text="${session.secaoIniciada.telefone}"></span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="email" class="form-label">E-mail :</label>
+                        <input class="form-control" type="text" name="email" id="email"><span id="spanemail" th:text="${session.secaoIniciada.email}">
+
+                        </span>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="dataNascimento" class="form-label">Data de nascimento</label>
+                        <input class="form-control" name="dataNascimento" type="date" id="dataNascimento" ><span id="spandatanasc" th:text="${session.secaoIniciada.dataNascimento}"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="especialidade" class="form-label">Especialidade</label>
+                        <select onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidade"
+                            required>
+                            <option></option>
+                            <option th:each="test:${especialidadeMedicoas}"><span
+                                    th:text="${test.especialidade}"></span> </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="medicos" class="form-label">Médico</label>
+                        <select onchange="filtarValor()" id="medicos" class="form-select" name="medicos" required><span></span>
+                            <option >Selecione um medico</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="valorConsulta" class="form-label">Valor Consulta</label>
+                        <input type="text" name="valorConsulta" id="valorConsulta" class="form-control">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="dataAgendamentoConsulta" class="form-label">Selecione a data</label>
+                        <input type="date" name="dataAgendamentoConsulta" id="dataAgendamentoConsulta"
+                            class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horarioConsulta" class="form-label">Horário</label>
+                        <input type="time" name="horarioConsulta" id="horarioConsulta" class="form-control" required>
                     </div>
                 </fieldset>
                 <button class="btn btn-success" type="submit">Salvar agendamento</button>
@@ -252,48 +261,55 @@
         <div class="container">
             <h1 class="text-center">Agendar Exames</h1>
             <hr class="w-25 mx-auto">
-            <form class=" needs-validation" novalidate>
+            <form action="/agendar" method="post" class=" needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    
-                    <div class="col-md-5">
-                        <label for="paciente" class="form-label">Paciente</label>
-                        <span class="text-capitalize" th:text="${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}"></span>
-                        <div class="invalid-feedback">
-                            Você deve informar seu nome.
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <span class="text-capitalize" th:text="${session.secaoIniciada.telefone}"></span>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="email" class="form-label">E-mail</label>
-                        <span class="text-capitalize" th:text="${session.secaoIniciada.email}"></span>
-                    </div>
 
-                    <div class="col-md-3">
-                        <label for="idade" class="form-label">Data de nascimento</label>
-                        <span class="text-capitalize" th:text="${session.secaoIniciada.dataNascimento}"></span>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="medico" class="form-label">Médico Solicitante</label>
-                        <input class="form-control" id="medico" name="medico" type="text" required>
-                    </div>
-                    <div class="col-md-4"    >
-                        <label   for="tipoExame" class="form-label">Tipo de exame</label>
-                        <select id="tipoExame" class="form-select" name="tipoExame"  required>
-                            <option th:each="exames:${tiposExames}"><span th:text="${exames.nome}"></span></option> 
-                            
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="agendamento" class="form-label">Selecione a data</label>
-                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+                    <div class="col-md-4">
+                        <label for="paciente" class="form-label">Paciente</label>
+                        <input name="paciente" id="pacienteExame" class="text-capitalize form-control"><span id="spanpaciExame" 
+                            th:text="${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}"></span>
+                        
                     </div>
                     <div class="col-md-2">
-                        <label for="horario" class="form-label">Horário</label>
-                        <input type="time" name="horario" id="horario" class="form-control" required>
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input class="form-control" name="telefone" id="telefoneExame"><span span id="spantelExame" 
+                         th:text="${session.secaoIniciada.telefone}"></span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input class="form-control" type="text" name="email" id="emailExame"><span span id="spanemailExame"  
+                         th:text="${session.secaoIniciada.email}"></span>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="dataNascimento" class="form-label">Data de nascimento</label>
+                        <input class="form-control" name="dataNascimento" type="date" id="dataNascimentoExame" ><span id="spandatanascExame"
+                         th:text="${session.secaoIniciada.dataNascimento}"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="medicoSolicitante" class="form-label">Médico Solicitante</label>
+                        <input class="form-control" id="medicoSolicitante" name="medicoSolicitante" type="text"
+                            required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tipoExame" class="form-label">Tipo de exame</label>
+                        <select onchange="filtarValorExame()" id="tipoExame" class="form-select" name="tipoExame" required>
+                            <option th:each="exames:${tiposExames}"><span th:text="${exames.nomeExame}"></span></option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="valorExame" class="form-label">Valor Exame</label>
+                        <input type="text" name="valorExame" id="valorExame" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="dataAgendamentoExame" class="form-label">Selecione a data</label>
+                        <input type="date" name="dataAgendamentoExame" id="dataAgendamentoExame" class="form-control"
+                            required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horarioExame" class="form-label">Horário</label>
+                        <input type="time" name="horarioExame" id="horarioExame" class="form-control" required>
                     </div>
                 </fieldset>
                 <button class="btn btn-success" type="submit">Salvar agendamento</button>
@@ -302,25 +318,74 @@
     </section>
 
     <script th:inline="javascript">
+    /**************************************SCRIPT CONSULTAS E EXAMES PARA AUTO PREENCHER OS CAMPOS **********************************************/
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('paciente').value = /*[[${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}]]*/[];
+            document.getElementById('pacienteExame').value = /*[[${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}]]*/[];
+            document.getElementById('telefone').value = /*[[${session.secaoIniciada.telefone}]]*/[];
+            document.getElementById('telefoneExame').value = /*[[${session.secaoIniciada.telefone}]]*/[];
+            document.getElementById('email').value = /*[[${session.secaoIniciada.email}]]*/[];
+            document.getElementById('emailExame').value = /*[[${session.secaoIniciada.email}]]*/[];
+            document.getElementById('dataNascimento').value = /*[[${session.secaoIniciada.dataNascimento}]]*/[];
+            document.getElementById('dataNascimentoExame').value = /*[[${session.secaoIniciada.dataNascimento}]]*/[];
+            spanpaci.style.display = 'none';
+            spanpaciExame.style.display = 'none';
+            spantel.style.display = 'none';
+            spantelExame.style.display = 'none';
+            spanemail.style.display = 'none';
+            spanemailExame.style.display = 'none';
+            spandatanasc.style.display = 'none';
+            spandatanascExame.style.display = 'none';
+        });
+
         function filtrarMedicos() {
-          
-          /*<![CDATA[*/
-          let lista = /*[[${especialidadeMedicoas}]]*/ [];
-          /*]]>*/
-          
-          const selectEspecialidades = document.querySelector('select').value;
-          const selectMedicos = document.querySelector('#medicos');
-          selectMedicos.innerHTML = "";
-          for(let list of lista){
-              if(selectEspecialidades === list.especialidade){
-                const elementoOption = document.createElement('option');
-                elementoOption.textContent = list.medico;
-                selectMedicos.appendChild(elementoOption);
-              }
-              
-          }
+            /*<![CDATA[*/
+            let lista = /*[[${especialidadeMedicoas}]]*/[];
+            /*]]>*/
+
+            const selectEspecialidades = document.querySelector('select').value;
+            const selectMedicos = document.querySelector('#medicos');
+            selectMedicos.innerHTML = "";
+            const elementoOptionVa = document.createElement('option');
+                    elementoOptionVa.textContent = "Selecione um medico";
+                    selectMedicos.appendChild(elementoOptionVa);
+            for (let list of lista) {
+                if (selectEspecialidades === list.especialidade) {
+                    const elementoOption = document.createElement('option');
+                    elementoOption.textContent =  list.medico;
+                    selectMedicos.appendChild(elementoOption);
+                }
+            }
         }
-       </script>
+        function filtarValor(){
+             /*<![CDATA[*/
+             let lista = /*[[${especialidadeMedicoas}]]*/[];
+            /*]]>*/
+            const selectMedicos = document.querySelector('#medicos').value;
+            
+            for(let list of lista){
+                if(list.medico === selectMedicos){
+                   document.getElementById('valorConsulta').value = list.valor;
+                }
+            }
+        }
+
+        function filtarValorExame(){
+             /*<![CDATA[*/
+             let lista = /*[[${tiposExames}]]*/[];
+            /*]]>*/
+            console.log(lista);
+            const selectExame = document.querySelector('#tipoExame').value;
+            console.log(selectExame);
+            
+            for(let list of lista){
+                if(list.nomeExame === selectExame){
+                   document.getElementById('valorExame').value = list.valor;
+                }
+            }
+        }
+
+    </script>
 </body>
 
 </html>
