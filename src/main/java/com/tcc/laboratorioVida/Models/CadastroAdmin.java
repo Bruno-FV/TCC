@@ -35,7 +35,7 @@ public class CadastroAdmin implements Serializable {
     }
 
     public void setColaborador(String colaborador) {
-        this.colaborador = colaborador;
+        this.colaborador = colaborador.trim();
     }
 
     public String getEmail() {
@@ -43,7 +43,7 @@ public class CadastroAdmin implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim();
     }
 
     public String getTelefone() {
@@ -51,7 +51,7 @@ public class CadastroAdmin implements Serializable {
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.telefone = telefone.trim();
     }
 
     public String getSenha() {

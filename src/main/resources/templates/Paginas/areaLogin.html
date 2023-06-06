@@ -61,24 +61,32 @@
         <h1 class="text-center">Minhas Solicitações</h1>
         <hr class="w-25 mx-auto">
         <div id="conteudo" class="row g-3">
-            <fieldset class="border rounded-2 p-3 m-1 col-5">
+            <fieldset class="border rounded-2 p-3 m-1 col-12">
                 <legend class="float-none w-auto">Últimas Consultas</legend>
                 <div id="tabelaconsultas">
                     <table class="table table-striped text-break">
                         <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Médico</th>
+                            <tr >
+                                <th  scope="col">Paciente</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Data Nascimento</th>
                                 <th scope="col">Especialidade</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Médico</th>
+                                <th scope="col">Data da Consulta</th>
+                                <th scope="col">Hórario da Consulta</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">Bruno Ferreira Vieira</th>
-                                <th scope="row">Psiquiatra</th>
-                                <th scope="row">concluido</th>
+                            <tr th:each="agendamento:${agendamentos}">
+                                <th class="text-capitalize" th:text="${agendamento.paciente}" scope="row"></th>
+                                <th th:text="${agendamento.telefone}" scope="row"></th>
+                                <th th:text="${agendamento.email}" scope="row"></th>
+                                <th th:text="${agendamento.dataNascimento}" scope="row"></th>
+                                <th class="text-capitalize" th:text="${agendamento.especialidade}" scope="row"></th>
+                                <th class="text-capitalize" th:text="${agendamento.medicos}" scope="row"></th>
+                                <th  th:text="${agendamento.dataAgendamentoConsulta}" scope="row"></th>
+                                <th th:text="${agendamento.horarioConsulta}" scope="row"></th>
                             </tr>
 
 
@@ -86,7 +94,7 @@
                     </table>
                 </div>
             </fieldset>
-            <fieldset class="border rounded-2 p-3 m-1 col-5">
+            <!--  <fieldset class="border rounded-2 p-3 m-1 col-5">
                 <legend class="float-none w-auto">Útimos Exames</legend>
                 <div id="tabelaexames">
                     <table class="table table-striped">
@@ -109,7 +117,7 @@
                         </tbody>
                     </table>
                 </div>
-            </fieldset>
+            </fieldset>--->
         </div>
         <div>
             <h1 class="text-center">Solicitações em andamento</h1>
@@ -194,7 +202,7 @@
         <div class="container">
             <h1 class="text-center">Agendar Consultas</h1>
             <hr class="w-25 mx-auto">
-            <form action="/agendar" method="post" class="needs-validation" novalidate>
+            <form action="/agendarConsultas" method="post" class="needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
 
@@ -223,11 +231,10 @@
                     </div>
                     <div class="col-md-5">
                         <label for="especialidade" class="form-label">Especialidade</label>
-                        <select onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidade"
+                        <select th:text="${especialidadeMedicos}" onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidade"
                             required>
-                            <option></option>
-                            <option th:each="test:${especialidadeMedicoas}"><span
-                                    th:text="${test.especialidade}"></span> </option>
+                            
+                            
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -261,7 +268,7 @@
         <div class="container">
             <h1 class="text-center">Agendar Exames</h1>
             <hr class="w-25 mx-auto">
-            <form action="/agendar" method="post" class=" needs-validation" novalidate>
+            <form action="/agendarExames" method="post" class=" needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
 
@@ -295,6 +302,7 @@
                     <div class="col-md-4">
                         <label for="tipoExame" class="form-label">Tipo de exame</label>
                         <select onchange="filtarValorExame()" id="tipoExame" class="form-select" name="tipoExame" required>
+                            <option> Selecione o tipo do exame</option>
                             <option th:each="exames:${tiposExames}"><span th:text="${exames.nomeExame}"></span></option>
                         </select>
                     </div>
@@ -318,8 +326,27 @@
     </section>
 
     <script th:inline="javascript">
+        /*<![CDATA[*/
+        let lista = /*[[${especialidadeMedicos}]]*/[];
+            /*]]>*/
+            const novaLista = lista.filter((list, index) => {
+                return lista.findIndex(obj => obj.especialidade === list.especialidade) === index;
+                
+            });
+            console.log(novaLista);
+
     /**************************************SCRIPT CONSULTAS E EXAMES PARA AUTO PREENCHER OS CAMPOS **********************************************/
         document.addEventListener('DOMContentLoaded', function () {
+            const selectEspecialidade = document.querySelector('#especialidade');
+            const elementoOptionEs = document.createElement('option');
+            elementoOptionEs.textContent = "Selecione uma especialidade";
+            selectEspecialidade.appendChild(elementoOptionEs);
+            for(let list of novaLista){
+                const elementoOption = document.createElement('option');
+                elementoOption.textContent =  list.especialidade;
+                selectEspecialidade.appendChild(elementoOption);
+            }
+
             document.getElementById('paciente').value = /*[[${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}]]*/[];
             document.getElementById('pacienteExame').value = /*[[${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}]]*/[];
             document.getElementById('telefone').value = /*[[${session.secaoIniciada.telefone}]]*/[];
@@ -339,10 +366,6 @@
         });
 
         function filtrarMedicos() {
-            /*<![CDATA[*/
-            let lista = /*[[${especialidadeMedicoas}]]*/[];
-            /*]]>*/
-
             const selectEspecialidades = document.querySelector('select').value;
             const selectMedicos = document.querySelector('#medicos');
             selectMedicos.innerHTML = "";
@@ -357,10 +380,9 @@
                 }
             }
         }
+
         function filtarValor(){
-             /*<![CDATA[*/
-             let lista = /*[[${especialidadeMedicoas}]]*/[];
-            /*]]>*/
+            
             const selectMedicos = document.querySelector('#medicos').value;
             
             for(let list of lista){
@@ -371,14 +393,12 @@
         }
 
         function filtarValorExame(){
-             /*<![CDATA[*/
-             let lista = /*[[${tiposExames}]]*/[];
-            /*]]>*/
-            console.log(lista);
-            const selectExame = document.querySelector('#tipoExame').value;
-            console.log(selectExame);
             
-            for(let list of lista){
+            /*<![CDATA[*/
+        let listaExames = /*[[${tiposExames}]]*/[];
+            /*]]>*/
+            const selectExame = document.querySelector('#tipoExame').value;
+            for(let list of listaExames){
                 if(list.nomeExame === selectExame){
                    document.getElementById('valorExame').value = list.valor;
                 }

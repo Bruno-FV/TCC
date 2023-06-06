@@ -2,6 +2,7 @@ package com.tcc.laboratorioVida.Models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +17,19 @@ public class CadastroLogin implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @OneToMany
+    private List<AgendamentoConsultas> agendamentoConsultas;
+
+    public List<AgendamentoConsultas> getAgendamentoConsultas() {
+        return this.agendamentoConsultas;
+    }
+
+    public void setAgendamentoConsultas(List<AgendamentoConsultas> agendamentoConsultas) {
+        this.agendamentoConsultas = agendamentoConsultas;
+    }
+
+    @OneToMany
+    private List<AgendamentoExames> agendamentoExames;
     private String nome;
     private String sobrenome;
     @Column(unique = true)
@@ -53,7 +67,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.trim();
     }
 
     public String getSobrenome() {
@@ -61,7 +75,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+        this.sobrenome = sobrenome.trim();
     }
 
     public String getEmail() {
@@ -69,7 +83,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim();
     }
 
     public String getTelefone() {
@@ -77,7 +91,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.telefone = telefone.trim();
     }
 
     public String getRua() {
@@ -85,7 +99,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setRua(String rua) {
-        this.rua = rua;
+        this.rua = rua.trim();
     }
 
     public String getNumero() {
@@ -93,7 +107,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setNumero(String numero) {
-        this.numero = numero;
+        this.numero = numero.trim();
     }
 
     public String getBairro() {
@@ -101,7 +115,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setBairro(String bairro) {
-        this.bairro = bairro;
+        this.bairro = bairro.trim();
     }
 
     public String getCep() {
@@ -109,7 +123,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setCep(String cep) {
-        this.cep = cep;
+        this.cep = cep.trim();
     }
 
     public String getCidade() {
@@ -117,7 +131,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setCidade(String cidade) {
-        this.cidade = cidade;
+        this.cidade = cidade.trim();
     }
 
     public String getEstado() {
@@ -125,7 +139,7 @@ public class CadastroLogin implements Serializable {
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        this.estado = estado.trim();
     }
 
     public String getSenha() {

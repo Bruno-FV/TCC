@@ -29,8 +29,8 @@ public class AreaAdminController {
     public String administracao(HttpServletResponse response, HttpSession session,
     HttpServletRequest request, Model model){
         
-        ArrayList especialidadeMedicoas = (ArrayList) consultasRepo.findAll();  
-        model.addAttribute("especialidadeMedicoas", especialidadeMedicoas);
+        ArrayList especialidadeMedicos = (ArrayList) consultasRepo.findAll();  
+        model.addAttribute("especialidadeMedicos", especialidadeMedicos);
 
         Iterable tiposExames =  examesRepo.findAll(); 
         model.addAttribute("tiposExames", tiposExames);
@@ -52,8 +52,9 @@ public class AreaAdminController {
         
     }
     @PostMapping("/adicionarConsultas")
-    public String cadConsultas(CadastroConsultas consultas){
+    public String cadConsultas(CadastroConsultas consultas, Model model){
         consultasRepo.save(consultas);
+        model.addAttribute("mensagem", "Consulta Salva com sucesso");
         return "redirect:/administracao";
     }
     @PostMapping("/adcionarExames")

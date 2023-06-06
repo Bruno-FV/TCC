@@ -8,5 +8,9 @@ import com.tcc.laboratorioVida.Models.CadastroConsultas;
 
 
 public interface CadConsultasRepo extends CrudRepository<CadastroConsultas, String> {
+
+    
+
+    
     
 }

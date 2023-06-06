@@ -32,7 +32,7 @@ public class CadastroConsultas implements Serializable {
     }
 
     public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+        this.especialidade = especialidade.trim();
     }
 
     public String getMedico() {
@@ -40,7 +40,7 @@ public class CadastroConsultas implements Serializable {
     }
 
     public void setMedico(String medico) {
-        this.medico = medico;
+        this.medico = medico.trim();
     }
 
     public String getValor() {
@@ -48,7 +48,7 @@ public class CadastroConsultas implements Serializable {
     }
 
     public void setValor(String valor) {
-        this.valor = valor;
+        this.valor = valor.trim();
     }
 
     

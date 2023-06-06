@@ -1,23 +1,25 @@
 package com.tcc.laboratorioVida.Models;
 
-
 import java.io.Serializable;
 import java.sql.Date;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Agendamentos implements Serializable {
+public class AgendamentoConsultas implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    @ManyToOne
+    private CadastroLogin cadastroLogin; 
+    @ManyToOne
+    private CadastroAdmin cadastroAdmin;
     private String paciente;
     private String telefone;
     private String email;
@@ -27,11 +29,6 @@ public class Agendamentos implements Serializable {
     private String valorConsulta;
     private Date dataAgendamentoConsulta;
     private String horarioConsulta;
-    private String medicoSolicitante;
-    private String tipoExame;
-    private String valorExame;
-    private Date dataAgendamentoExame;
-    private String horarioExame;
 
     public long getId() {
         return this.id;
@@ -46,7 +43,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setPaciente(String paciente) {
-        this.paciente = paciente;
+        this.paciente = paciente.trim();
     }
 
     public String getTelefone() {
@@ -54,7 +51,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.telefone = telefone.trim();
     }
 
     public String getEmail() {
@@ -62,7 +59,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim();
     }
 
     public Date getDataNascimento() {
@@ -78,7 +75,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+        this.especialidade = especialidade.trim();
     }
 
     public String getMedicos() {
@@ -86,7 +83,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setMedicos(String medicos) {
-        this.medicos = medicos;
+        this.medicos = medicos.trim();
     }
 
     public String getValorConsulta() {
@@ -94,7 +91,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setValorConsulta(String valorConsulta) {
-        this.valorConsulta = valorConsulta;
+        this.valorConsulta = valorConsulta.trim();
     }
 
     public Date getDataAgendamentoConsulta() {
@@ -110,48 +107,7 @@ public class Agendamentos implements Serializable {
     }
 
     public void setHorarioConsulta(String horarioConsulta) {
-        this.horarioConsulta = horarioConsulta;
+        this.horarioConsulta = horarioConsulta.trim();
     }
-
-    public String getMedicoSolicitante() {
-        return this.medicoSolicitante;
-    }
-
-    public void setMedicoSolicitante(String medicoSolicitante) {
-        this.medicoSolicitante = medicoSolicitante;
-    }
-
-    public String getTipoExame() {
-        return this.tipoExame;
-    }
-
-    public void setTipoExame(String tipoExame) {
-        this.tipoExame = tipoExame;
-    }
-
-    public String getValorExame() {
-        return this.valorExame;
-    }
-
-    public void setValorExame(String valorExame) {
-        this.valorExame = valorExame;
-    }
-
-    public Date getDataAgendamentoExame() {
-        return this.dataAgendamentoExame;
-    }
-
-    public void setDataAgendamentoExame(Date dataAgendamentoExame) {
-        this.dataAgendamentoExame = dataAgendamentoExame;
-    }
-
-    public String getHorarioExame() {
-        return this.horarioExame;
-    }
-
-    public void setHorarioExame(String horarioExame) {
-        this.horarioExame = horarioExame;
-    }
-
 
 }

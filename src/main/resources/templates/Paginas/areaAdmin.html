@@ -52,6 +52,7 @@
             <h1 class="text-center">Atualização de Serviços</h1>
             <hr class="w-25 mx-auto">
             <div id="conteudo">
+                <div th:if="${mensagem != null}" th:text="${mensagem}" class="alert alert-danger" role="alert"></div>
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto"> Consultas</legend>
                     <form action="/adicionarConsultas" method="post" class="needs-validation" novalidate>
@@ -77,7 +78,7 @@
                             </div>
                         </div>
                         <button class="btn btn-danger m-2" type="reset">Remover</button>
-                        <button class="btn btn-success m-2" type="submit">Adcionar</button>
+                        <button  class="btn btn-success m-2" type="submit">Adcionar</button>
                         
                     </form>
                 </fieldset>
@@ -243,9 +244,9 @@
                     
                     <div class="col-md-5">
                         <label for="especialidade" class="form-label" >Especialidade</label>
-                        <select onchange="filtrarMedicos()"  class="form-select" name="especialidade" id="especialidade"  required>
+                        <select  class="form-select" name="especialidade" id="especialidade"  required>
                             <option  ></option>
-                            <option    th:each="test:${especialidadeMedicoas}"><span  th:text="${test.especialidade}"></span> </option> 
+                            <option></option>   
                         </select>
                     </div>
                     <div class="col-md-5"    >
@@ -307,7 +308,7 @@
                     <div class="col-md-4"    >
                         <label   for="tipoExame" class="form-label">Tipo de exame</label>
                         <select id="tipoExame" class="form-select" name="tipoExame"  required>
-                            <option th:each="exames:${tiposExames}"><span th:text="${exames.nome}"></span></option> 
+                            <option ></span></option> 
                             
                         </select>
                     </div>
@@ -324,29 +325,7 @@
             </form>
         </div>
     </section>
-    <script th:inline="javascript">
-     function filtrarMedicos() {
-       
-       /*<![CDATA[*/
-       let lista = /*[[${especialidadeMedicoas}]]*/ [];
-       /*]]>*/
-
-       const selectEspecialidades = document.querySelector('select').value;
-       const selectMedicos = document.querySelector('#medicos');
-       const inputValor = document.querySelector('#valor');
-       selectMedicos.innerHTML = "";
-       for(let list of lista){
-           if(selectEspecialidades === list.especialidade){
-             const elementoOption = document.createElement('option');
-             elementoOption.textContent = list.medico;
-             selectMedicos.appendChild(elementoOption);                      
-           }
-           
-           
-       }
-       
-     }
-    </script>
+    
 
 </body>
 

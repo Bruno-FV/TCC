@@ -30,7 +30,7 @@ public class CadastroExames implements Serializable {
     }
 
     public void setNomeExame(String nomeExame) {
-        this.nomeExame = nomeExame;
+        this.nomeExame = nomeExame.trim();
     }
 
     public String getValor() {
@@ -38,7 +38,7 @@ public class CadastroExames implements Serializable {
     }
 
     public void setValor(String valor) {
-        this.valor = valor;
+        this.valor = valor.trim();
     }
 
 }
