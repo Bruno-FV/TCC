@@ -77,7 +77,6 @@
                                 Você deve informar o Valor.
                             </div>
                         </div>
-                        <button class="btn btn-danger m-2" type="reset">Remover</button>
                         <button  class="btn btn-success m-2" type="submit">Adcionar</button>
                         
                     </form>
@@ -101,7 +100,6 @@
                                 Você deve informar o valor do exame.
                             </div>
                         </div>
-                        <button class="btn btn-danger m-2" type="submit">Remover</button>
                         <button class="btn btn-success m-2" type="submit">Adcionar</button>
                         
                     </form>
@@ -111,6 +109,43 @@
             <div id="conteudo">
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto">Contato</legend>
+                    <form action="atualizarContato" method="post" class="needs-validation" novalidate>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o email.
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" name="telefone" id="telefone" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o número do contato.
+                            </div>
+                        </div>
+                        <button class="btn btn-success m-2" type="submit">Adicionar</button>
+                    </form>
+                </fieldset>
+                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                    <legend class="float-none w-auto">Contato</legend>
+                    <form action="removerContato" method="post" class="needs-validation" novalidate>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o email.
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" name="telefone" id="telefone" required>
+                            <div class="invalid-feedback">
+                                Você deve informar o número do contato.
+                            </div>
+                        </div>
+                        <button class="btn btn-danger m-2" type="submit">Remover</button>
+                    </form>
                 </fieldset>
             </div>
            

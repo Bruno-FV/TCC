@@ -172,8 +172,10 @@
             </div>
             <div class="col-6">
                 <h2>Fale Conosco</h2>
-                <p><i class="bi bi-whatsapp fs-1 m-2"></i>(86) 99471-2058</p>
-                <p> <i class="bi bi-envelope-at fs-1 m-2"></i>E-mail</p>
+                <span th:each="contato:${contatos}">
+                    <p><i class="bi bi-whatsapp fs-1 m-2"></i><span th:text="${contato.telefone}"></span></p>
+                    <p> <i class="bi bi-envelope-at fs-1 m-2"></i><span th:text="${contato.email}"></span></p>
+                </span>
             </div>
 
 

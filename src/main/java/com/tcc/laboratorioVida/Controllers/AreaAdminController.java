@@ -10,10 +10,12 @@ import com.tcc.laboratorioVida.Models.AgendamentoConsultas;
 import com.tcc.laboratorioVida.Models.AgendamentoExames;
 import com.tcc.laboratorioVida.Models.CadastroConsultas;
 import com.tcc.laboratorioVida.Models.CadastroExames;
+import com.tcc.laboratorioVida.Models.Contato;
 import com.tcc.laboratorioVida.Repository.AgendamentoConsultasRepo;
 import com.tcc.laboratorioVida.Repository.AgendamentoExamesRepo;
 import com.tcc.laboratorioVida.Repository.CadConsultasRepo;
 import com.tcc.laboratorioVida.Repository.CadExamesRepo;
+import com.tcc.laboratorioVida.Repository.ContatoRepo;
 
 import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,6 +37,9 @@ public class AreaAdminController {
 
      @Autowired
     private AgendamentoExamesRepo agendamentoExamesRepo;
+
+    @Autowired
+    private ContatoRepo contatoRepo;
     
     @GetMapping("/administracao")
     public String administracao(HttpServletResponse response, HttpSession session,
@@ -47,12 +52,16 @@ public class AreaAdminController {
 /***************buscar todos os exames cadastrados***********************************************************************/
     Iterable<CadastroExames> tiposExames =  examesRepo.findAll(); 
     model.addAttribute("tiposExames", tiposExames);
+
 /***************Buscar todos os agendamentos de consultas solicitados do usuario logado********************************************/
     Iterable<AgendamentoConsultas> agendamentos = agendamentoConsultasRepo.findAll();
     model.addAttribute("agendamentos", agendamentos);
+
 /***************Buscar todos os agendamentos de exames solicitados do usuario logado********************************************/
     Iterable<AgendamentoExames>agendamentosExames = agendamentoExamesRepo.findAll();
     model.addAttribute("agendamentoExames", agendamentosExames);
+
+    
    
 
         final String cacheControl = "Cache-Control";
@@ -89,6 +98,20 @@ public class AreaAdminController {
     @PostMapping("/agendarExamesAtendimento")
     public String agendarExames(AgendamentoExames exames){
         agendamentoExamesRepo.save(exames);
+        return "redirect:/administracao";
+    }
+    @PostMapping("/atualizarContato")
+    public String contato(Contato contato){
+        contatoRepo.save(contato);
+        return "redirect:/administracao";
+    }
+     @PostMapping("/removerContato")
+    public String contatoDelete(Contato contatos){
+        Iterable<Contato>contato = contatoRepo.findAll();
+        if(((Contato) contato).getEmail() == contatos.getEmail()){
+            contatoRepo.delete(contatos);
+        }
+        
         return "redirect:/administracao";
     }
 }
