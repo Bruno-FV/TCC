@@ -60,17 +60,24 @@
     <div id="msolicitacao" class="container-fluid">
         <h1 class="text-center">Minhas Solicitações</h1>
         <hr class="w-25 mx-auto">
+        <div class="row g-3">
+            <div class="col-6">
+                <legend id="solicitacoesConsultas" class="text-center" ><i class="bi bi-clipboard-pulse  fs-1"></i>Consultas</legend>
+                <hr class="w-25 mx-auto">
+            </div>
+            <div class="col-6">
+                <legend id="solicitacoesExames" class="text-center"><i class="bi bi-bandaid  fs-1"></i>Exames</legend>
+                <hr class="w-25 mx-auto">
+            </div>
+        </div>
         <div id="conteudo" class="row g-3">
-            <fieldset class="border rounded-2 p-3 m-1 col-12">
+            <fieldset id="sConsultas" class="border rounded-2 p-3 m-1 col-6">
                 <legend class="float-none w-auto">Últimas Consultas</legend>
                 <div id="tabelaconsultas">
                     <table class="table table-striped text-break">
                         <thead>
                             <tr >
                                 <th  scope="col">Paciente</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Data Nascimento</th>
                                 <th scope="col">Especialidade</th>
                                 <th scope="col">Médico</th>
                                 <th scope="col">Data da Consulta</th>
@@ -78,122 +85,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="agendamento:${agendamentos}">
-                                <th class="text-capitalize" th:text="${agendamento.paciente}" scope="row"></th>
-                                <th th:text="${agendamento.telefone}" scope="row"></th>
-                                <th th:text="${agendamento.email}" scope="row"></th>
-                                <th th:text="${agendamento.dataNascimento}" scope="row"></th>
+                            <tr  th:each="agendamento:${agendamentos}">
+                                <th class="text-capitalize"  th:text="${agendamento.paciente}" scope="row"></th>
                                 <th class="text-capitalize" th:text="${agendamento.especialidade}" scope="row"></th>
                                 <th class="text-capitalize" th:text="${agendamento.medicos}" scope="row"></th>
-                                <th  th:text="${agendamento.dataAgendamentoConsulta}" scope="row"></th>
+                                <th th:text="${agendamento.dataAgendamentoConsulta}" scope="row"></th>
                                 <th th:text="${agendamento.horarioConsulta}" scope="row"></th>
                             </tr>
-
-
                         </tbody>
                     </table>
                 </div>
             </fieldset>
-            <!--  <fieldset class="border rounded-2 p-3 m-1 col-5">
+             <fieldset id="sExames" class="border rounded-2 p-3 m-1 col-5">
                 <legend class="float-none w-auto">Útimos Exames</legend>
                 <div id="tabelaexames">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Data</th>
+                                <th scope="col">Paciente</th>
                                 <th scope="col">Tipo</th>
-                                <th scope="col">Valor Total</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Medico Solicitante</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Data do Exame</th>
+                                <th scope="col">Horário Exame</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">emograma completo</th>
-                                <th scope="row">R$ 80,00</th>
-                                <th scope="row">realizado</th>
+                            <tr th:each="exame:${exames}">
+                                <th th:text="${exame.paciente}" scope="row"></th>
+                                <th th:text="${exame.tipoExame}" scope="row"></th>
+                                <th th:text="${exame.medicoSolicitante}" scope="row"></th>
+                                <th th:text="${exame.valorExame}" scope="row"></th>
+                                <th th:text="${exame.dataAgendamentoExame}" scope="row"></th>
+                                <th th:text="${exame.horarioExame}" scope="row"></th>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
-            </fieldset>--->
-        </div>
-        <div>
-            <h1 class="text-center">Solicitações em andamento</h1>
-            <hr class="w-25 mx-auto">
-            <div id="solicitacaoAndamento" class="row g-3">
-                <fieldset class="border p-3 rounded-2 m-1 col-5">
-                    <legend class="float-none w-auto">Últimas Consultas</legend>
-                    <div id="tabelaconsultas">
-                        <table class="table table-striped text-break">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Data</th>
-                                    <th scope="col">Médico</th>
-                                    <th scope="col">Especialidade</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">01/02/2022</th>
-                                    <th scope="row">Bruno Ferreira Vieira</th>
-                                    <th scope="row">Psiquiatra</th>
-                                    <th scope="row">concluido</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">01/02/2022</th>
-                                    <th scope="row">Bruno Ferreira Vieira 2</th>
-                                    <th scope="row">Psiquiatra 2</th>
-                                    <th scope="row">concluido</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">01/02/2022</th>
-                                    <th scope="row">Bruno Ferreira Vieira 3</th>
-                                    <th scope="row">Psiquiatra 3</th>
-                                    <th scope="row">concluido</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </fieldset>
-                <fieldset class="border p-3 m-1 col-5">
-                    <legend class="float-none w-auto">Útimos Exames</legend>
-                    <div id="tabelaexames">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Data</th>
-                                    <th scope="col">Tipo</th>
-                                    <th scope="col">Valor Total</th>
-                                    <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">01/02/2022</th>
-                                    <th scope="row">emograma completo</th>
-                                    <th scope="row">R$ 80,00</th>
-                                    <th scope="row">realizado</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">01/02/2022</th>
-                                    <th scope="row">emograma</th>
-                                    <th scope="row">R$ 80,00</th>
-                                    <th scope="row">realizado</th>
-                                </tr>
-                                <tr>
-                                    <th scope="row">01/02/2022</th>
-                                    <th scope="row">sangue</th>
-                                    <th scope="row">R$ 80,00</th>
-                                    <th scope="row">realizado</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </fieldset>
-            </div>
+            </fieldset>
         </div>
     </div>
 
@@ -233,8 +162,6 @@
                         <label for="especialidade" class="form-label">Especialidade</label>
                         <select th:text="${especialidadeMedicos}" onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidade"
                             required>
-                            
-                            
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -333,20 +260,19 @@
                 return lista.findIndex(obj => obj.especialidade === list.especialidade) === index;
                 
             });
-            console.log(novaLista);
 
     /**************************************SCRIPT CONSULTAS E EXAMES PARA AUTO PREENCHER OS CAMPOS **********************************************/
         document.addEventListener('DOMContentLoaded', function () {
-            const selectEspecialidade = document.querySelector('#especialidade');
-            const elementoOptionEs = document.createElement('option');
-            elementoOptionEs.textContent = "Selecione uma especialidade";
-            selectEspecialidade.appendChild(elementoOptionEs);
+        const selectEspecialidade = document.querySelector('#especialidade');
+        const elementoOptionEs = document.createElement('option');
+        elementoOptionEs.textContent = "Selecione uma especialidade";
+        selectEspecialidade.appendChild(elementoOptionEs);
             for(let list of novaLista){
                 const elementoOption = document.createElement('option');
                 elementoOption.textContent =  list.especialidade;
                 selectEspecialidade.appendChild(elementoOption);
             }
-
+/************************buscar o usuario logado pela sessão e exibir no input*****************************************************************/
             document.getElementById('paciente').value = /*[[${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}]]*/[];
             document.getElementById('pacienteExame').value = /*[[${session.secaoIniciada.nome +' '+ session.secaoIniciada.sobrenome}]]*/[];
             document.getElementById('telefone').value = /*[[${session.secaoIniciada.telefone}]]*/[];
@@ -355,6 +281,7 @@
             document.getElementById('emailExame').value = /*[[${session.secaoIniciada.email}]]*/[];
             document.getElementById('dataNascimento').value = /*[[${session.secaoIniciada.dataNascimento}]]*/[];
             document.getElementById('dataNascimentoExame').value = /*[[${session.secaoIniciada.dataNascimento}]]*/[];
+/*************************ocultar os nomes em baixo dos input*********************************************************************************/
             spanpaci.style.display = 'none';
             spanpaciExame.style.display = 'none';
             spantel.style.display = 'none';

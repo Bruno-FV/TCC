@@ -2,12 +2,12 @@ package com.tcc.laboratorioVida.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcc.laboratorioVida.Models.CadastroAdmin;
-
 import com.tcc.laboratorioVida.Repository.CadAdminRepo;
 import com.tcc.laboratorioVida.Repository.Criptografia;
 
@@ -19,7 +19,7 @@ public class CadastroAdminController {
     private CadAdminRepo cadAdminRepo;
     
     @GetMapping("/cadastro_usuario_admin")
-    public String cadastroAdmin() {
+    public String cadastroAdmin(Model model) {
         return "Paginas/cadastrologinAdmin";
     }
 

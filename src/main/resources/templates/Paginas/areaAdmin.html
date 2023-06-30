@@ -136,37 +136,33 @@
                 <legend class="float-none w-auto">Consultas</legend>
                 <form class="row g-3">
                     <div class="col-md-6">
-                        <label for="dataInicial" class="form-label">Data inicial</label>
-                        <input type="date" name="dataInicial" id="dataInicial" class="form-control" required>
+                        <label for="dataInicialConsultas" class="form-label">Data inicial</label>
+                        <input type="date" name="dataInicialConsultas" id="dataInicialConsultas" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="dataFinal" class="form-label">Data Final</label>
-                        <input type="date" name="dataFinal" id="dataFinal" class="form-control" required>
+                        <label for="dataFinalConsultas" class="form-label">Data Final</label>
+                        <input type="date" name="dataFinalConsultas" id="dataFinalConsultas" class="form-control" required>
                     </div>
                     <div class="d-grid gap-2 col-5 mx-auto">
-                        <button class="btn btn-success m-2" type="submit">Exibir</button>
+                        
+                        <button id="exibirConsultasAgendadas" class="btn btn-success m-2" type="button">Exibir</button>
                     </div>
                     
                 </form>
+                <div id="listaagendamento" th:text="${agendamentos}"></div>
+                <div id="listaagendamento" th:text="${agendamentoExames}"></div>
                 <div id="tabelaconsultas">
                     <table class="table table-striped text-break">
                         <thead>
                             <tr>
-                                <th scope="col">Data</th>
                                 <th scope="col">Especialidade</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Valor Unitário</th>
                                 <th scope="col">Valor Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">Pediátra</th>
-                                <th scope="row">5</th>
-                                <th scope="row">200</th>
-                                <th scope="row">1000</th>
-                            </tr>
+                        <tbody id="listaFiltradaConsultas">
+                            
                         </tbody>
                         
                     </table>
@@ -176,36 +172,29 @@
                 <legend class="float-none w-auto">Exames</legend>
                 <form class="row g-3">
                     <div class="col-md-6">
-                        <label for="dataInicial" class="form-label">Data inicial</label>
-                        <input type="date" name="dataInicial" id="dataInicial" class="form-control" required>
+                        <label for="dataInicialExames" class="form-label">Data inicial</label>
+                        <input type="date" name="dataInicialExames" id="dataInicialExames" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="dataFinal" class="form-label">Data Final</label>
-                        <input type="date" name="dataFinal" id="dataFinal" class="form-control" required>
+                        <label for="dataFinalExames" class="form-label">Data Final</label>
+                        <input type="date" name="dataFinalExames" id="dataFinalExames" class="form-control" required>
                     </div>
                     <div class="d-grid gap-2 col-5 mx-auto">
-                        <button class="btn btn-success m-2" type="submit">Exibir</button>
+                        <button id="exibirExamesAgendadas" class="btn btn-success m-2" type="button">Exibir</button>
                     </div>
                 </form>
                 <div id="tabelaexames">
                     <table class="table table-striped text-break">
                         <thead>
                             <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Tipo</th>
+                                <th scope="col">Tipo do Exame</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Valor Unitário</th>
                                 <th scope="col">Valor Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">01/02/2022</th>
-                                <th scope="row">emograma completo</th>
-                                <th scope="col">5</th>
-                                <th scope="row">R$ 80,00</th>
-                                <th scope="row">400</th>
-                            </tr>
+                        <tbody id="listaFiltradaExames">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -216,59 +205,59 @@
     <!------------------------------------HTML PÁGINA CONSULTAS INICIO----------------------------------------------------------->
     <section id="consultas" class="consultas">
         <div class="container">
-            <h1 class="text-center">Agendar Consultas</h1><hr class="w-25 mx-auto">
-            <form class="needs-validation" novalidate>
+            <h1 class="text-center">Agendar Consultas</h1>
+            <hr class="w-25 mx-auto">
+            <form action="/agendarConsultasAtendimento" method="post" class="needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    <div class="col-md-5">
-                        <label for="paciente" class="form-label">Paciente</label>
-                        <input type="text" class="form-control" name="paciente" id="paciente" required>
-                        <div class="invalid-feedback">
-                            Você deve informar seu nome.
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text" name="telefone" id="telefone" class="form-control" required>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" name="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="col-md-3">
-                        <label for="idade" class="form-label">Data de nascimento</label>
-                        <input type="date" name="idade" id="idade" class="form-control" required>
-                    </div>
-                    
-                    
-                    <div class="col-md-5">
-                        <label for="especialidade" class="form-label" >Especialidade</label>
-                        <select  class="form-select" name="especialidade" id="especialidade"  required>
-                            <option  ></option>
-                            <option></option>   
-                        </select>
-                    </div>
-                    <div class="col-md-5"    >
-                        <label   for="medicos" class="form-label">Médico</label>
-                        <select id="medicos" class="form-select" name="medicos"  required>
-                            <option ></option> 
-                        </select>
-                    </div>
-                    <div class="col-md-1"    >
-                        <label   for="valor" class="form-label">Valor</label>
-                        <input  id="valor" class="form-control" name="valor">
-                    </div>
-                    
-                    <div class="col-md-3">
-                        <label for="agendamento" class="form-label">Selecione a data</label>
-                        <input type="date" name="agendamento" id="agendamento" class="form-control" required>
+
+                    <div class="col-md-4">
+                        <label for="paciente" class="form-label">Paciente :</label>
+                        <input name="paciente" id="paciente" class="text-capitalize form-control">
                     </div>
                     <div class="col-md-2">
-                        <label for="horario" class="form-label">Horário</label>
-                        <input type="time" name="horario" id="horario" class="form-control" required>
+                        <label for="telefone" class="form-label">Telefone :</label>
+                        <input class="form-control" name="telefone" id="telefone">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="email" class="form-label">E-mail :</label>
+                        <input class="form-control" type="text" name="email" id="email">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="dataNascimento" class="form-label">Data de nascimento</label>
+                        <input class="form-control" name="dataNascimento" type="date" id="dataNascimento" >
+                    </div>
+                    <div class="col-md-5">
+                        <label for="especialidades" class="form-label">Especialidade</label>
+                        <select th:text="${especialidadeMedicos}" onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidades"
+                            required>
+                            
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label for="medicos" class="form-label">Médico</label>
+                        <select onchange="filtarValor()" id="medicos" class="form-select" name="medicos" required>
+                            <option >Selecione um medico</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="valorConsulta" class="form-label">Valor Consulta</label>
+                        <input type="text" name="valorConsulta" id="valorConsulta" class="form-control">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="dataAgendamentoConsulta" class="form-label">Selecione a data</label>
+                        <input type="date" name="dataAgendamentoConsulta" id="dataAgendamentoConsulta"
+                            class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="horarioConsulta" class="form-label">Horário</label>
+                        <input type="time" name="horarioConsulta" id="horarioConsulta" class="form-control" required>
                     </div>
                 </fieldset>
+                <div th:if="${mensagem != null}" th:text="${mensagem}" class="alert alert-danger" role="alert"></div>
                 <button class="btn btn-success" type="submit">Salvar agendamento</button>
             </form>
         </div>
@@ -278,26 +267,26 @@
     <section id="exames" class="exames">
         <div class="container">
             <h1 class="text-center">Agendar Exames</h1><hr class="w-25 mx-auto">
-            <form class=" needs-validation" novalidate>
+            <form action="/agendarExamesAtendimento" method="post" class=" needs-validation" novalidate>
                 <fieldset class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="paciente" class="form-label">Paciente</label>
                         <input type="text" class="form-control" name="paciente" id="paciente" required>
                         <div class="invalid-feedback">
                             Você deve informar seu nome.
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label for="telefone" class="form-label">Telefone</label>
                         <input type="text" name="telefone" id="telefone" class="form-control" required>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <label for="email" class="form-label">E-mail</label>
                         <input type="email" name="email" id="email" class="form-control" required>
                     </div>
                     
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label for="idade" class="form-label">Data de nascimento</label>
                         <input type="date" name="idade" id="idade" class="form-control" required>
                     </div>
@@ -305,12 +294,16 @@
                         <label for="medico" class="form-label">Médico Solicitante</label>
                         <input class="form-control" id="medico" name="medico" type="text" required>
                     </div>
-                    <div class="col-md-4"    >
-                        <label   for="tipoExame" class="form-label">Tipo de exame</label>
-                        <select id="tipoExame" class="form-select" name="tipoExame"  required>
-                            <option ></span></option> 
-                            
+                    <div class="col-md-4">
+                        <label for="tipoExame" class="form-label">Tipo de exame</label>
+                        <select onchange="filtarValorExame()" id="tipoExame" class="form-select" name="tipoExame" required>
+                            <option> Selecione o tipo do exame</option>
+                            <option th:each="exames:${tiposExames}"><span th:text="${exames.nomeExame}"></span></option>
                         </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="valorExame" class="form-label">Valor Exame</label>
+                        <input type="text" name="valorExame" id="valorExame" class="form-control">
                     </div>
                     <div class="col-md-3">
                         <label for="agendamento" class="form-label">Selecione a data</label>
@@ -325,8 +318,164 @@
             </form>
         </div>
     </section>
-    
 
+    <script th:inline="javascript">
+/***********************************chamada de todas as listas necessárias******************************************************/
+       
+             /*<![CDATA[*/
+        let lista = /*[[${especialidadeMedicos}]]*/[];
+            /*]]>*/
+
+            /*<![CDATA[*/
+        let listaAgendamentos = /*[[${agendamentos}]]*/[];
+            /*]]>*/
+
+            /*<![CDATA[*/
+        let listaAgendamentoExames = /*[[${agendamentoExames}]]*/[];
+            /*]]>*/
+/***********************Filtro para eliminar as especialidades repetidas*******************************************************/
+            const novaLista = lista.filter((list, index) => {
+                return lista.findIndex(obj => obj.especialidade === list.especialidade) === index;
+                
+            });
+            
+        document.addEventListener('DOMContentLoaded', function () {
+        const selectEspecialidade = document.querySelector('#especialidades');
+        const elementoOptionEs = document.createElement('option');
+        elementoOptionEs.textContent = "Selecione uma especialidade";
+        selectEspecialidade.appendChild(elementoOptionEs);
+        
+            for(let list of novaLista){
+                const elementoOption = document.createElement('option');
+                elementoOption.textContent =  list.especialidade;
+                selectEspecialidade.appendChild(elementoOption);
+            }
+            
+        });
+        function filtrarMedicos() {
+            const selectEspecialidades = document.querySelector('select').value;
+            const selectMedicos = document.querySelector('#medicos');
+            selectMedicos.innerHTML = "";
+            const elementoOptionVa = document.createElement('option');
+                    elementoOptionVa.textContent = "Selecione um medico";
+                    selectMedicos.appendChild(elementoOptionVa);
+            for (let list of lista) {
+                if (selectEspecialidades === list.especialidade) {
+                    const elementoOption = document.createElement('option');
+                    elementoOption.textContent =  list.medico;
+                    selectMedicos.appendChild(elementoOption);
+                }
+            }
+        }
+        function filtarValor(){
+            
+            const selectMedicos = document.querySelector('#medicos').value;
+            
+            for(let list of lista){
+                if(list.medico === selectMedicos){
+                   document.getElementById('valorConsulta').value = list.valor;
+                }
+            }
+        }
+        function filtarValorExame(){
+            
+            /*<![CDATA[*/
+        let listaExames = /*[[${tiposExames}]]*/[];
+            /*]]>*/
+            const selectExame = document.querySelector('#tipoExame').value;
+            for(let list of listaExames){
+                if(list.nomeExame === selectExame){
+                   document.getElementById('valorExame').value = list.valor;
+                }
+            }
+        }
+      
+/****************************Função para filtar os agendamentos de consultas por data*****************************************/      
+
+function agendamentosFiltrados() {
+  let dataInicialC = document.querySelector('#dataInicialConsultas').value;
+  let dataFinalC = document.querySelector('#dataFinalConsultas').value;
+  let tabela = document.querySelector('#listaFiltradaConsultas');
+  var agendamentosFiltrados = listaAgendamentos.filter(function(agendamento) {
+    return agendamento.dataAgendamentoConsulta >= dataInicialC && agendamento.dataAgendamentoConsulta <= dataFinalC;
+  }).reduce(function (acc, curr) {
+    if (typeof acc[curr.especialidade] == 'undefined') {
+      acc[curr.especialidade] = {quantidade: 1, valorConsulta: curr.valorConsulta};
+    } else {
+      acc[curr.especialidade].quantidade += 1;
+    }
+    return acc;
+  }, {});
+  
+  for (let [key, value] of Object.entries(agendamentosFiltrados)) {
+    let linha = document.createElement('tr');
+    let coluna = document.createElement('td');
+    coluna.textContent = key;
+    let quantidade = document.createElement('td');
+    quantidade.textContent = value.quantidade;
+    let valorUnitario = document.createElement('td');
+    valorUnitario.textContent = value.valorConsulta;
+    let valorTotalsoma = value.valorConsulta * value.quantidade;
+    let valorTotal = document.createElement('td');
+    valorTotal.textContent = valorTotalsoma;
+    linha.appendChild(coluna);
+    linha.appendChild(quantidade);
+    linha.appendChild(valorUnitario);
+    linha.appendChild(valorTotal);
+    tabela.appendChild(linha);    
+  }
+}   
+/**********************Evento para chamar a função para listar as consultas agendadas****************************************/   
+    let eventoExibir = document.querySelector('#exibirConsultasAgendadas');
+
+        eventoExibir.addEventListener('click', function(){
+            agendamentosFiltrados();            
+        });
+
+/***********************Evento para chamar a função para listar as consultas agendadas**************************************/   
+    let eventoExibirExames = document.querySelector('#exibirExamesAgendadas');
+
+    eventoExibirExames.addEventListener('click', function(){
+        agendamentosExamesFiltrados();    
+    });
+
+/**********************Função para filtar os agendamentos de exames por data***********************************************/
+function agendamentosExamesFiltrados() {
+  let dataInicialC = document.querySelector('#dataInicialExames').value;
+  let dataFinalC = document.querySelector('#dataFinalExames').value;
+  let tabela = document.querySelector('#listaFiltradaExames');
+  var agendamentosFiltrados = listaAgendamentoExames.filter(function(agendamento) {
+    return agendamento.dataAgendamentoExame >= dataInicialC && agendamento.dataAgendamentoExame <= dataFinalC;
+  }).reduce(function (acc, curr) {
+    if (typeof acc[curr.tipoExame] == 'undefined') {
+      acc[curr.tipoExame] = {quantidade: 1, valorExame: curr.valorExame};
+    } else {
+      acc[curr.tipoExame].quantidade += 1;
+    }
+    return acc;
+  }, {});
+  
+  for (let [key, value] of Object.entries(agendamentosFiltrados)) {
+    let linha = document.createElement('tr');
+    let coluna = document.createElement('td');
+    coluna.textContent = key;
+    let quantidade = document.createElement('td');
+    quantidade.textContent = value.quantidade;
+    let valorUnitario = document.createElement('td');
+    valorUnitario.textContent = value.valorExame;
+    let valorTotalsoma = value.valorExame * value.quantidade;
+    let valorTotal = document.createElement('td');
+    valorTotal.textContent = valorTotalsoma;
+    linha.appendChild(coluna);
+    linha.appendChild(quantidade);
+    linha.appendChild(valorUnitario);
+    linha.appendChild(valorTotal);
+    tabela.appendChild(linha);    
+  }
+}   
+ 
+    </script>
+  
 </body>
 
 </html>

@@ -48,3 +48,26 @@ exibirexames.addEventListener('click', function () {
   }
 
 });
+
+let exibirSolicitacoesConsultas = document.querySelector('#solicitacoesConsultas');
+let exibirSolicitacoesExames = document.querySelector('#solicitacoesExames');
+
+exibirSolicitacoesConsultas.addEventListener('click', function () {
+  if (sConsultas.style.display === 'block') {
+    sConsultas.style.display = 'none';
+    sExames.style.display = 'none';
+  } else {
+    sConsultas.style.display = 'block';
+    sExames.style.display = 'none';
+  }
+
+});
+exibirSolicitacoesExames.addEventListener('click', function () {
+  if (sExames.style.display === 'block') {
+    sConsultas.style.display = 'none';
+    sExames.style.display = 'none';
+  } else {
+    sConsultas.style.display = 'none';
+    sExames.style.display = 'block';
+  }
+});

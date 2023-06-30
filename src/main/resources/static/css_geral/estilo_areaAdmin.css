@@ -87,6 +87,9 @@ h3 {
 }
 
 /******************************ESTILO RELATÓRIOS INICIO**************************************/
+#listaagendamento{
+    display: none;
+}
 #relatorios {
     float: right;
     margin-top: 5em;

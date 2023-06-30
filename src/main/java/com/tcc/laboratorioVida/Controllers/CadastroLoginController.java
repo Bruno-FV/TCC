@@ -26,11 +26,14 @@ public class CadastroLoginController {
     @PostMapping("/verificarEmail")
     public String verificarEmail(CadastroLogin cadastroLogin, CadastroLogin confirmarEmail,
             RedirectAttributes aviso, HttpSession session) {
+
         CadastroLogin confirmacaoEmail = this.cadLoginRepo.verificarEmail(confirmarEmail.getEmail());
+        
         if (confirmacaoEmail != null) {
             aviso.addFlashAttribute("mensagem", "Email já cadastrado, efetue login.");
             return "redirect:/login";
         } else {
+
             cadastroLogin.setSenha(Criptografia.md5cripto(cadastroLogin.getSenha()));
             cadLoginRepo.save(cadastroLogin);
             session.setAttribute("secaoIniciada", cadastroLogin);

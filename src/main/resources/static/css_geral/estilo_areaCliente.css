@@ -87,22 +87,20 @@ h3 {
     justify-content: space-evenly;
     margin: 0;
     padding: 0;
+}
+#sConsultas,
+#sExames{
+    display: none;    
+}
 
-
-
+#solicitacoesExames,
+#solicitacoesConsultas{
+    cursor: pointer;
 }
 
 #tabelaexames,
 #tabelaconsultas {
     text-align: center;
-}
-
-#solicitacaoAndamento {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 0;
 }
 
 
@@ -111,8 +109,6 @@ h3 {
     float: right;
     margin-top: 5em;
     display: none;
-
-
 }
 
 /******************************ESTILO AGENDAMENTO DE EXAMES INICIO***************************/

@@ -2,14 +2,14 @@ package com.tcc.laboratorioVida.Models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class CadastroLogin implements Serializable {
@@ -17,19 +17,6 @@ public class CadastroLogin implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @OneToMany
-    private List<AgendamentoConsultas> agendamentoConsultas;
-
-    public List<AgendamentoConsultas> getAgendamentoConsultas() {
-        return this.agendamentoConsultas;
-    }
-
-    public void setAgendamentoConsultas(List<AgendamentoConsultas> agendamentoConsultas) {
-        this.agendamentoConsultas = agendamentoConsultas;
-    }
-
-    @OneToMany
-    private List<AgendamentoExames> agendamentoExames;
     private String nome;
     private String sobrenome;
     @Column(unique = true)
@@ -43,6 +30,7 @@ public class CadastroLogin implements Serializable {
     private String estado;
     private String senha;
     private Date dataNascimento;
+
     
 
     public Date getDataNascimento() {

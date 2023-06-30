@@ -1,13 +1,10 @@
 package com.tcc.laboratorioVida.Controllers;
 
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcc.laboratorioVida.Models.CadastroLogin;
@@ -42,10 +39,8 @@ public class LoginController {
     CadastroLogin confirmacao = this.cadLoginRepo.login(confirmar.getEmail(),
         Criptografia.md5cripto(confirmar.getSenha()));
     if (confirmacao != null) {
-         
       session.setAttribute("secaoIniciada", confirmacao);
       session.setMaxInactiveInterval(60*60);
-      
       return "redirect:/arealogin";
     } else {
       aviso.addFlashAttribute("mensagem", "Email ou senha inválidos, tente novamente");

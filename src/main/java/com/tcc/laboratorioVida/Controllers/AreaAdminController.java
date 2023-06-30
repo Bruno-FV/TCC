@@ -1,12 +1,17 @@
 package com.tcc.laboratorioVida.Controllers;
 
-import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.tcc.laboratorioVida.Models.AgendamentoConsultas;
+import com.tcc.laboratorioVida.Models.AgendamentoExames;
 import com.tcc.laboratorioVida.Models.CadastroConsultas;
 import com.tcc.laboratorioVida.Models.CadastroExames;
+import com.tcc.laboratorioVida.Repository.AgendamentoConsultasRepo;
+import com.tcc.laboratorioVida.Repository.AgendamentoExamesRepo;
 import com.tcc.laboratorioVida.Repository.CadConsultasRepo;
 import com.tcc.laboratorioVida.Repository.CadExamesRepo;
 
@@ -24,16 +29,30 @@ public class AreaAdminController {
 
     @Autowired
     CadExamesRepo examesRepo;
+
+    @Autowired
+    private AgendamentoConsultasRepo agendamentoConsultasRepo;
+
+     @Autowired
+    private AgendamentoExamesRepo agendamentoExamesRepo;
     
     @GetMapping("/administracao")
     public String administracao(HttpServletResponse response, HttpSession session,
     HttpServletRequest request, Model model){
         
-        ArrayList especialidadeMedicos = (ArrayList) consultasRepo.findAll();  
-        model.addAttribute("especialidadeMedicos", especialidadeMedicos);
-
-        Iterable tiposExames =  examesRepo.findAll(); 
-        model.addAttribute("tiposExames", tiposExames);
+/**************buscar todas as especialidades e medicos cadastrados *****************************************************/
+    Iterable<CadastroConsultas> especialidadeMedicos =  consultasRepo.findAll(); 
+    model.addAttribute("especialidadeMedicos", especialidadeMedicos);
+        
+/***************buscar todos os exames cadastrados***********************************************************************/
+    Iterable<CadastroExames> tiposExames =  examesRepo.findAll(); 
+    model.addAttribute("tiposExames", tiposExames);
+/***************Buscar todos os agendamentos de consultas solicitados do usuario logado********************************************/
+    Iterable<AgendamentoConsultas> agendamentos = agendamentoConsultasRepo.findAll();
+    model.addAttribute("agendamentos", agendamentos);
+/***************Buscar todos os agendamentos de exames solicitados do usuario logado********************************************/
+    Iterable<AgendamentoExames>agendamentosExames = agendamentoExamesRepo.findAll();
+    model.addAttribute("agendamentoExames", agendamentosExames);
    
 
         final String cacheControl = "Cache-Control";
@@ -51,6 +70,11 @@ public class AreaAdminController {
         } 
         
     }
+    @PostMapping("/agendarConsultasAtendimento")
+    public String agendarConsultas(AgendamentoConsultas agendamentoConsultas){  
+        agendamentoConsultasRepo.save(agendamentoConsultas);  
+        return "redirect:/administracao";
+    } 
     @PostMapping("/adicionarConsultas")
     public String cadConsultas(CadastroConsultas consultas, Model model){
         consultasRepo.save(consultas);
@@ -60,6 +84,11 @@ public class AreaAdminController {
     @PostMapping("/adcionarExames")
     public String cadExames(CadastroExames exames){
         examesRepo.save(exames);
+        return "redirect:/administracao";
+    }
+    @PostMapping("/agendarExamesAtendimento")
+    public String agendarExames(AgendamentoExames exames){
+        agendamentoExamesRepo.save(exames);
         return "redirect:/administracao";
     }
 }
