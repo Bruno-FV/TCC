@@ -110,7 +110,7 @@
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto">Contato</legend>
                     <form action="atualizarContato" method="post" class="needs-validation" novalidate>
-                        <div class="col-12">
+                        <div class="col-10">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="email" required>
                             <div class="invalid-feedback">
@@ -129,7 +129,24 @@
                 </fieldset>
                 <fieldset class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto">Contato</legend>
-                    <form action="removerContato" method="post" class="needs-validation" novalidate>
+                    <div id="tabelaconsultas">
+                        <table class="table table-striped text-break">
+                            <thead>
+                                <tr >
+                                    <th  scope="col">Email</th>
+                                    <th scope="col">Telefone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  th:each="contatos:${contato}">
+                                    <th class="text-capitalize"  th:text="${contatos.email}" scope="row"></th>
+                                    <th class="text-capitalize" th:text="${contatos.telefone}" scope="row"></th>
+                                    <th><a href="#" th:onclick="'window.location.href = \'' + @{/removerContato/{id}(id=${contatos.id})} + '\''" class="btn btn-danger">Excluir</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--<form action="removerContato" method="post" class="needs-validation" novalidate>
                         <div class="col-12">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="email" required>
@@ -144,7 +161,7 @@
                                 Você deve informar o número do contato.
                             </div>
                         </div>
-                        <button class="btn btn-danger m-2" type="submit">Remover</button>
+                        <button class="btn btn-danger m-2" type="submit">Remover</button>-->
                     </form>
                 </fieldset>
             </div>

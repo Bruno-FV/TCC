@@ -4,7 +4,9 @@ package com.tcc.laboratorioVida.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tcc.laboratorioVida.Models.AgendamentoConsultas;
 import com.tcc.laboratorioVida.Models.AgendamentoExames;
@@ -61,6 +63,11 @@ public class AreaAdminController {
     Iterable<AgendamentoExames>agendamentosExames = agendamentoExamesRepo.findAll();
     model.addAttribute("agendamentoExames", agendamentosExames);
 
+/***************Buscar todos os contatos********************************************/
+    Iterable<Contato>contato = contatoRepo.findAll();
+    model.addAttribute("contato", contato);
+
+
     
    
 
@@ -105,12 +112,9 @@ public class AreaAdminController {
         contatoRepo.save(contato);
         return "redirect:/administracao";
     }
-     @PostMapping("/removerContato")
-    public String contatoDelete(Contato contatos){
-        Iterable<Contato>contato = contatoRepo.findAll();
-        if(((Contato) contato).getEmail() == contatos.getEmail()){
-            contatoRepo.delete(contatos);
-        }
+    @GetMapping("/removerContato/{id}")
+    public String contatoDelete(@PathVariable String id){
+        contatoRepo.deleteById(id);
         
         return "redirect:/administracao";
     }

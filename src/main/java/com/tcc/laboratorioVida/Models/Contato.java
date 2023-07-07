@@ -40,4 +40,10 @@ public class Contato implements Serializable {
         this.email = email;
     }
 
+    public boolean isPresent() {
+        return false;
+    }
+
+    
+
 }
