@@ -15,6 +15,7 @@ public class HomeControler {
 
     @GetMapping("/home")
     public String home(Model model) {
+        
 /**************************Buscar todos os Contatos ********************************************/
     Iterable<Contato>contato = contatoRepo.findAll();
     model.addAttribute("contatos", contato);
