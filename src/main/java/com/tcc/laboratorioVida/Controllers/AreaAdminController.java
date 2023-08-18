@@ -64,11 +64,7 @@ public class AreaAdminController {
 
 /***************Buscar todos os contatos********************************************/
     Iterable<Contato>contato = contatoRepo.findAll();
-    model.addAttribute("contato", contato);
-
-
-    
-   
+    model.addAttribute("contato", contato);   
 
         final String cacheControl = "Cache-Control";
         response.setHeader(cacheControl, "no-cache, no-store, must-revalidate");

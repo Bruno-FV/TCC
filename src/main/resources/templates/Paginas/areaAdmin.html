@@ -40,6 +40,7 @@
             <li id="click2" class="list-group-item"><i  class="bi bi-clipboard-data  fs-1"></i>Relatórios</li>
             <li id="click3" class="list-group-item"><i class="bi bi-clipboard-pulse  fs-1"></i>Nova Consultas</li>
             <li id="click4" class="list-group-item "><i class="bi bi-bandaid  fs-1"></i>Novo Exames</li>
+            <li class="list-group-item"><i  class="bi bi-person-add  fs-1"></i><a href="/cadastro_usuario_admin">Novo Usuário</a></li>
             <form action="/logoutAdmin" method="post">
                 <button id="btnsair" type="submit"><i class="bi bi-box-arrow-right fs-1"></i>Sair</button>
             </form>
@@ -53,7 +54,7 @@
             <hr class="w-25 mx-auto">
             <div id="conteudo">
                 <div th:if="${mensagem != null}" th:text="${mensagem}" class="alert alert-danger" role="alert"></div>
-                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                <fieldset id="fieldset-atualização"  class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto"> Consultas</legend>
                     <form action="/adicionarConsultas" method="post" class="needs-validation" novalidate>
                         <div class="col-12">
@@ -83,7 +84,7 @@
                 </fieldset>
             </div>
             <div id="conteudo">
-                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                <fieldset id="fieldset-atualização" class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto">Exames</legend>
                     <form action="/adcionarExames" method="post" class="needs-validation" novalidate>
                         <div>
@@ -107,7 +108,7 @@
                 
             </div>
             <div id="conteudo">
-                <fieldset class="border rounded-2 p-3 m-1 col-5">
+                <fieldset id="fieldset-atualização" class="border rounded-2 p-3 m-1 col-5">
                     <legend class="float-none w-auto">Contato</legend>
                     <form action="atualizarContato" method="post" class="needs-validation" novalidate>
                         <div class="col-10">
@@ -127,8 +128,10 @@
                         <button class="btn btn-success m-2" type="submit">Adicionar</button>
                     </form>
                 </fieldset>
-                <fieldset class="border rounded-2 p-3 m-1 col-5">
-                    <legend class="float-none w-auto">Contato</legend>
+            </div>
+            <div>
+                <fieldset id="fieldset-atualização-contato" class="border rounded-2 p-3 m-1 col-5">
+                    <legend class="float-none w-auto"></legend>
                     <div id="tabelaconsultas">
                         <table class="table table-striped text-break">
                             <thead>
@@ -260,11 +263,11 @@
                         <input class="form-control" type="text" name="email" id="email">
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 w-auto">
                         <label for="dataNascimento" class="form-label">Data de nascimento</label>
                         <input class="form-control" name="dataNascimento" type="date" id="dataNascimento" >
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="especialidades" class="form-label">Especialidade</label>
                         <select th:text="${especialidadeMedicos}" onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidades"
                             required>
@@ -278,7 +281,7 @@
                             <option >Selecione um medico</option>
                         </select>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 w-auto">
                         <label for="valorConsulta" class="form-label">Valor Consulta</label>
                         <input type="text" name="valorConsulta" id="valorConsulta" class="form-control">
                     </div>
@@ -322,11 +325,11 @@
                         <input type="email" name="email" id="email" class="form-control" required>
                     </div>
                     
-                    <div class="col-md-2">
+                    <div class="col-md-2 w-auto">
                         <label for="idade" class="form-label">Data de nascimento</label>
                         <input type="date" name="idade" id="idade" class="form-control" required>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="medico" class="form-label">Médico Solicitante</label>
                         <input class="form-control" id="medico" name="medico" type="text" required>
                     </div>
@@ -337,7 +340,7 @@
                             <option th:each="exames:${tiposExames}"><span th:text="${exames.nomeExame}"></span></option>
                         </select>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 w-auto">
                         <label for="valorExame" class="form-label">Valor Exame</label>
                         <input type="text" name="valorExame" id="valorExame" class="form-control">
                     </div>

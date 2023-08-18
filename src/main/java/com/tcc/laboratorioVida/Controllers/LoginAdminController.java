@@ -11,6 +11,7 @@ import com.tcc.laboratorioVida.Models.CadastroAdmin;
 import com.tcc.laboratorioVida.Repository.CadAdminRepo;
 import com.tcc.laboratorioVida.Repository.Criptografia;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
@@ -20,8 +21,13 @@ public class LoginAdminController {
     private CadAdminRepo cadAdminRepo;
 
     @GetMapping("/loginAdmin")
-    public String loginAdm(){
-        return "Paginas/loginAdmin";
+    public String loginAdm(HttpSession session, HttpServletRequest request){
+        session = request.getSession(false);
+    if (session != null && session.getAttribute("secaoAdminIniciada") != null) {
+      return "redirect:/administracao";// A sessão está ativa e o usuário está logado.
+    } else {
+      return "Paginas/loginAdmin";// A sessão não está ativa ou o usuário não está logado.
+    }
     }
 
     @PostMapping("/validarAdmin")

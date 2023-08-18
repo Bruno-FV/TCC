@@ -99,13 +99,13 @@
              <fieldset id="sExames" class="border rounded-2 p-3 m-1 col-5">
                 <legend class="float-none w-auto">Útimos Exames</legend>
                 <div id="tabelaexames">
-                    <table class="table table-striped">
+                    <table class="table table-striped text-break">
                         <thead>
                             <tr>
                                 <th scope="col">Paciente</th>
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Medico Solicitante</th>
-                                <th scope="col">Valor</th>
+                                <th scope="col">Valor R$</th>
                                 <th scope="col">Data do Exame</th>
                                 <th scope="col">Horário Exame</th>
                             </tr>
@@ -128,11 +128,11 @@
 
     <!------------------------------------HTML PÁGINA CONSULTAS INICIO----------------------------------------------------------->
     <section id="consultas" class="consultas">
-        <div class="container">
+        <div id="container-consultas" class="container">
             <h1 class="text-center">Agendar Consultas</h1>
             <hr class="w-25 mx-auto">
             <form action="/agendarConsultas" method="post" class="needs-validation" novalidate>
-                <fieldset class="border row g-3 rounded-2 p-3 m-2">
+                <fieldset id="container-filedset" class="border row g-3 rounded-2 p-3 m-2">
                     <legend class="float-none w-auto">Dados paciente</legend>
 
                     <div class="col-md-4">
@@ -154,11 +154,11 @@
                         </span>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 w-auto">
                         <label for="dataNascimento" class="form-label">Data de nascimento</label>
                         <input class="form-control" name="dataNascimento" type="date" id="dataNascimento" ><span id="spandatanasc" th:text="${session.secaoIniciada.dataNascimento}"></span>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="especialidade" class="form-label">Especialidade</label>
                         <select th:text="${especialidadeMedicos}" onchange="filtrarMedicos()" class="form-select" name="especialidade" id="especialidade"
                             required>
@@ -170,7 +170,7 @@
                             <option >Selecione um medico</option>
                         </select>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 w-auto">
                         <label for="valorConsulta" class="form-label">Valor Consulta</label>
                         <input type="text" name="valorConsulta" id="valorConsulta" class="form-control">
                     </div>
@@ -216,7 +216,7 @@
                          th:text="${session.secaoIniciada.email}"></span>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 w-auto">
                         <label for="dataNascimento" class="form-label">Data de nascimento</label>
                         <input class="form-control" name="dataNascimento" type="date" id="dataNascimentoExame" ><span id="spandatanascExame"
                          th:text="${session.secaoIniciada.dataNascimento}"></span>
@@ -233,7 +233,7 @@
                             <option th:each="exames:${tiposExames}"><span th:text="${exames.nomeExame}"></span></option>
                         </select>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 w-auto">
                         <label for="valorExame" class="form-label">Valor Exame</label>
                         <input type="text" name="valorExame" id="valorExame" class="form-control">
                     </div>

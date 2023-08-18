@@ -4,6 +4,7 @@
 body {
     background-color: #ead2ac;
     font-family: 'Josefin Slab', serifa;
+    overflow-x: hidden;
 }
 
 .navbar {
@@ -16,7 +17,7 @@ body {
 }
 
 #nomeuser {
-    font-size: 2em;
+    font-size: 1em;
     font-family: 'Merienda', cursive;
     color: #f7f7f7;
 }
@@ -34,7 +35,7 @@ h3 {
 
 #menu {
     float: left;
-    margin-top: 5em;
+    margin-top: 4em;
     max-width: 3em;
     height: 100vh;
     background-color: #3E2F5B;
@@ -46,6 +47,7 @@ h3 {
     background-color: inherit;
     border: none;
     color: white;
+    margin-left: -5px;
 }
 
 .list-group {
@@ -130,4 +132,71 @@ h3 {
 .list-group:hover {
     visibility: visible;
     transition: 1s;
+}
+/******************************DIMENSIONAMENTOS DE TELAS*********************************/
+@media (max-width: 328px){
+    .navbar-brand img {
+        height: 26px;
+        width: 28px;
+        margin-right: 0px !important;
+    }
+    #menu {
+        margin-top: 2.5em;
+        max-width: 2em;
+    }
+    #msolicitacao {
+        padding-left: 2em;
+    }
+    #tabelaexames,
+    #tabelaconsultas {
+    font-size: 8px;
+    }
+    #sConsultas,
+    #sExames{
+        margin: 0px !important ;  
+        padding: 0px !important;
+        width: 100%; 
+    }
+
+}
+@media (min-width: 328px) and (max-width: 640px){
+    #menu {
+        margin-top: 2.5em;
+        max-width: 2em;
+    }
+    #msolicitacao {
+        padding-left: 2em;
+    }
+    #tabelaexames,
+    #tabelaconsultas {
+    font-size: 10px;
+    }
+    #sConsultas,
+    #sExames{
+        margin: 0px !important ;  
+        padding: 0px !important;
+        width: 100%; 
+    }
+}
+@media (min-width: 641px){
+    #msolicitacao {
+        padding-left: 3.2em;
+    }
+    #tabelaexames,
+    #tabelaconsultas {
+    font-size: 12px;
+    }
+    #sConsultas,
+    #sExames{
+        margin: 0px !important ;  
+        padding: 0px !important;
+        width: 90%; 
+    }
+    #container-consultas{
+        padding: 0px !important;
+    }
+    #container-filedset{
+        padding: 0px !important;
+    }
+
 }
