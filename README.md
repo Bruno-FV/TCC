@@ -6,7 +6,7 @@ Bem-vindo ao repositório do projeto Laboratório Vida! Este sistema web foi des
 
 ## Diagrama de Caso de Uso
 
-![Diagrama de Caso de Uso](diagrama\caso\de\uso-2.png)
+[![Diagrama de Caso de Uso](diagrama\caso\de\uso-2.png)](https://github.com/Bruno-FV/TCC/issues/1#issue-2077564753)
 
 ## Diagrama de Classes
 
