@@ -6,12 +6,16 @@ Bem-vindo ao repositório do projeto Laboratório Vida! Este sistema web foi des
 
 ## Diagrama de Caso de Uso
 
+<<<<<<< HEAD
 
 ![Diagrama de Caso de Uso](diagrama\caso\de\uso-2.png)
+=======
+![diagrama caso de uso](https://github.com/Bruno-FV/TCC/assets/60984829/9bc4f42e-9db5-4a5d-9f66-a00225726bca)
+>>>>>>> e44c43c951aaee4685388fc736791a2459304743
 
 ## Diagrama de Classes
 
-![Diagrama de Classes](diagrama\de\classes.png)
+![diagrama de classes](https://github.com/Bruno-FV/TCC/assets/60984829/ece4ad42-8b58-4919-bb0f-13ab962b8437)
 
 ## Funcionalidades Principais
 
