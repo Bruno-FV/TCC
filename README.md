@@ -10,7 +10,7 @@ Bem-vindo ao repositório do projeto Laboratório Vida! Este sistema web foi des
 
 ## Diagrama de Classes
 
-![Diagrama de Classes](diagrama\ de\ classes.png)
+![Diagrama de Classes](diagrama\de\classes.png)
 
 
 ## Funcionalidades Principais
