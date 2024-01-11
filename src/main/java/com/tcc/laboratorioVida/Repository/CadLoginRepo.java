@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.tcc.laboratorioVida.Models.CadastroLogin;
 
-public interface CadLoginRepo extends CrudRepository<CadastroLogin, String> {
+public interface CadLoginRepo extends CrudRepository<CadastroLogin, Long> {
 
     @Query(value = "select * from cadastro_login where email = :email and senha = :senha", nativeQuery = true)
     public CadastroLogin login(String email, String senha);

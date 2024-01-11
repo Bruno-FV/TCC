@@ -108,7 +108,7 @@ public class AreaAdminController {
         return "redirect:/administracao";
     }
     @GetMapping("/removerContato/{id}")
-    public String contatoDelete(@PathVariable String id){
+    public String contatoDelete(@PathVariable Long id){
         contatoRepo.deleteById(id);
         
         return "redirect:/administracao";

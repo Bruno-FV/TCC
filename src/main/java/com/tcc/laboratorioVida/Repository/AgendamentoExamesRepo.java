@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.tcc.laboratorioVida.Models.AgendamentoExames;
 
-public interface AgendamentoExamesRepo extends CrudRepository<AgendamentoExames, String> {
+public interface AgendamentoExamesRepo extends CrudRepository<AgendamentoExames, Long> {
     
 }
