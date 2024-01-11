@@ -4,6 +4,15 @@
 
 Bem-vindo ao repositório do projeto Laboratório Vida! Este sistema web foi desenvolvido para atender às necessidades do Laboratório Vida, uma empresa inovadora no ramo de análises clínicas. O objetivo é proporcionar aos clientes uma maneira eficiente de solicitar agendamentos de exames e consultas, além de oferecer informações sobre os serviços disponíveis e contatos da empresa.
 
+## Diagrama de Caso de Uso
+
+![Diagrama de Caso de Uso](!<diagrama caso de uso-2.png>)
+
+## Diagrama de Classes
+
+![Diagrama de Classes](!<diagrama de classes.png>)
+
+
 ## Funcionalidades Principais
 
 - **Solicitação de Exames e Consultas:**
