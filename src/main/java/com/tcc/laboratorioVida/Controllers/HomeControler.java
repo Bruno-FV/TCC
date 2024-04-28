@@ -1,14 +1,16 @@
 package com.tcc.laboratorioVida.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tcc.laboratorioVida.Models.Contato;
 import com.tcc.laboratorioVida.Repository.ContatoRepo;
 
-@Controller
+@RestController
+@RequestMapping("https://tcc-laboratorio-vida.netlify.app/")
 public class HomeControler {
     @Autowired
     private ContatoRepo contatoRepo;
